@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cours IT — CyberTruck</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231f56d6' stroke-width='2'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/theme.js"></script>
+</head>
+<body data-root="../" data-section="it">
+  <header id="site-header"></header>
+
+  <main>
+    <div class="container page-head">
+      <div class="breadcrumb"><a href="index.html">Parcours IT</a> › Cours</div>
+      <div class="sim-tabs" role="navigation" aria-label="Choix du niveau" id="level-tabs"></div>
+      <h1 id="course-title"></h1>
+      <p class="lead" id="course-lead"></p>
+    </div>
+    <div class="container section-sm">
+      <div class="course-layout">
+        <nav class="course-toc card" aria-label="Sommaire du cours">
+          <strong style="display:block;margin-bottom:8px">Sommaire</strong>
+          <ol id="toc"></ol>
+          <div style="margin-top:16px" id="course-progress"></div>
+        </nav>
+        <div id="lessons"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="../assets/js/storage.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script src="../data/it-levels.js"></script>
+  <script src="../assets/js/scenario-engine.js"></script>
+  <script>
+    var id = Math.min(5, Math.max(1, parseInt(UI.param('niveau'), 10) || 1));
+    var lvl = DATA_IT.niveaux[id - 1];
+    var P = ScenarioEngine.Progress;
+    document.title = 'Niveau ' + id + ' · ' + lvl.rang + ' — Cours — CyberTruck';
+    document.getElementById('level-tabs').innerHTML = DATA_IT.niveaux.map(function (n) {
+      return '<a class="btn ' + (n.id === id ? 'btn-primary' : 'btn-secondary') + '" style="border-radius:999px" href="cours.html?niveau=' + n.id + '"' +
+        (n.id === id ? ' aria-current="page"' : '') + '>' + n.id + '. ' + n.rang + '</a>';
+    }).join('');
+    document.getElementById('course-title').textContent = 'Niveau ' + id + ' · ' + lvl.rang + ' — ' + lvl.titre;
+    document.getElementById('course-lead').textContent = lvl.resume;
+    document.getElementById('toc').innerHTML = lvl.cours.map(function (s, i) {
+      return '<li><a href="#s' + (i + 1) + '" data-lesson="n' + id + '-s' + (i + 1) + '">' + s.titre + '</a></li>';
+    }).join('');
+    var unlocked = P.isUnlocked(id);
+    document.getElementById('lessons').innerHTML = lvl.cours.map(function (s, i) {
+      return '<article class="lesson card" id="s' + (i + 1) + '"><h2><span class="num">' + (i + 1) + '</span> ' + s.titre + '</h2>' + s.html +
+        '<div class="lesson-foot"><button type="button" class="btn btn-secondary mark-read" data-lesson="n' + id + '-s' + (i + 1) + '" aria-pressed="false">Marquer comme lu</button></div></article>';
+    }).join('') +
+      '<div class="card center"><h2>Passez à la pratique</h2>' +
+      (unlocked
+        ? '<p class="muted">Le scénario du niveau ' + id + ' vous attend : ' + lvl.intro.titre + '.</p><a class="btn btn-primary" href="jeu.html?niveau=' + id + '">🎮 Lancer le scénario</a>'
+        : '<p class="muted">Validez d\'abord le niveau ' + (id - 1) + ' pour débloquer ce scénario.</p><a class="btn btn-primary" href="jeu.html?niveau=' + (id - 1) + '">Aller au niveau ' + (id - 1) + '</a>') +
+      '</div>';
+    UI.trackLessons('it.coursLus', document.getElementById('course-progress'));
+  </script>
+</body>
+</html>

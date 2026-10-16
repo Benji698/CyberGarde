@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cours phishing — CyberTruck</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231f56d6' stroke-width='2'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/theme.js"></script>
+</head>
+<body data-root="../" data-section="salaries">
+  <header id="site-header"></header>
+
+  <main>
+    <div class="container page-head">
+      <div class="breadcrumb"><a href="index.html">Parcours salarié</a> › Cours</div>
+      <h1>Phishing et ingénierie sociale</h1>
+      <p class="lead">L'ingénierie sociale, c'est l'art de manipuler une personne pour lui faire faire quelque chose : cliquer, payer, donner un mot de passe. Pas besoin d'être informaticien pour s'en protéger, il suffit de connaître les ficelles.</p>
+    </div>
+
+    <div class="container section-sm">
+      <div class="course-layout">
+        <nav class="course-toc card" aria-label="Sommaire du cours">
+          <strong style="display:block;margin-bottom:8px">Sommaire</strong>
+          <ol>
+            <li><a href="#l1" data-lesson="l1">Le phishing par e-mail</a></li>
+            <li><a href="#l2" data-lesson="l2">SMS et QR codes piégés</a></li>
+            <li><a href="#l3" data-lesson="l3">Faux appels et faux support</a></li>
+            <li><a href="#l4" data-lesson="l4">L'arnaque au président</a></li>
+            <li><a href="#l5" data-lesson="l5">Réseaux sociaux</a></li>
+            <li><a href="#l6" data-lesson="l6">J'ai cliqué : que faire ?</a></li>
+          </ol>
+          <div style="margin-top:16px" id="course-progress"></div>
+        </nav>
+
+        <div>
+          <article class="lesson card" id="l1">
+            <h2><span class="num">1</span> Le phishing par e-mail</h2>
+            <p>Le <strong>phishing</strong> (ou hameçonnage) est un faux message qui imite une source de confiance (banque, service informatique, livreur, administration…) pour vous pousser à <strong>cliquer sur un lien</strong>, <strong>ouvrir une pièce jointe</strong> ou <strong>donner des informations</strong>.</p>
+            <h3>Les 6 indices qui doivent vous alerter</h3>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Indice</th><th>Ce qu'il faut vérifier</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>L'expéditeur</strong></td><td>Le nom affiché peut être faux. Regardez l'adresse complète : <code>support@micros0ft-securite.com</code> n'est pas Microsoft.</td></tr>
+                  <tr><td><strong>L'urgence</strong></td><td>« Sous 24 h », « dernier avertissement », « compte suspendu » : la pression vous empêche de réfléchir.</td></tr>
+                  <tr><td><strong>Le lien</strong></td><td>Survolez-le sans cliquer : l'adresse réelle s'affiche en bas de l'écran. Elle doit correspondre au site officiel.</td></tr>
+                  <tr><td><strong>La pièce jointe</strong></td><td>Méfiez-vous des fichiers inattendus, des archives (.zip), des doubles extensions (.pdf.exe) et des documents qui demandent d'« activer les macros ».</td></tr>
+                  <tr><td><strong>La demande</strong></td><td>Mot de passe, code reçu par SMS, coordonnées bancaires : aucun organisme sérieux ne les demande par mail.</td></tr>
+                  <tr><td><strong>Le ton et la forme</strong></td><td>Salutation impersonnelle (« Cher client »), fautes, mise en page étrange… Attention : les phishings modernes peuvent être parfaitement rédigés.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="callout warn">
+              <div class="callout-title">⚠ Le piège du sous-domaine</div>
+              <p>Dans <code>https://www.impots.gouv.fr.verification-compte.com</code>, le vrai site est <strong>verification-compte.com</strong>. Lisez l'adresse de droite à gauche à partir du premier « / » : c'est la fin du nom qui compte.</p>
+            </div>
+            <div class="callout retenir">
+              <div class="callout-title">À retenir</div>
+              <p>Un message qui vous presse, vous fait peur ou vous promet un gain doit toujours être vérifié par un autre moyen avant d'agir.</p>
+            </div>
+            <div class="lesson-foot"><button type="button" class="btn btn-secondary mark-read" data-lesson="l1" aria-pressed="false">Marquer comme lu</button></div>
+          </article>
+
+          <article class="lesson card" id="l2">
+            <h2><span class="num">2</span> SMS et QR codes piégés</h2>
+            <p>Le <strong>smishing</strong> est un phishing par SMS. Sur téléphone, l'adresse des liens est difficile à vérifier et l'on réagit plus vite : c'est exactement ce que veulent les escrocs.</p>
+            <div class="example-box">
+              <strong>Exemples courants :</strong> colis bloqué avec « frais de réexpédition », amende impayée, remboursement de l'Assurance Maladie, carte Vitale à renouveler, compte CPF à activer, faux message d'un proche (« Maman, j'ai changé de numéro… »).
+            </div>
+            <p>Le <strong>quishing</strong> utilise des QR codes : un faux autocollant collé sur un parcmètre, une borne de recharge ou une table de restaurant, ou un QR code dans un mail pour contourner les filtres anti-spam.</p>
+            <div class="callout faire">
+              <div class="callout-title">✓ Que faire ?</div>
+              <ul>
+                <li>Ne cliquez pas : allez directement sur le site ou l'application officielle.</li>
+                <li>Transférez gratuitement les SMS frauduleux au <strong>33700</strong>.</li>
+                <li>Avant de valider une page ouverte par un QR code, vérifiez l'adresse affichée.</li>
+                <li>Méfiez-vous des autocollants superposés sur un QR code existant.</li>
+              </ul>
+            </div>
+            <div class="lesson-foot"><button type="button" class="btn btn-secondary mark-read" data-lesson="l2" aria-pressed="false">Marquer comme lu</button></div>
+          </article>
+
+          <article class="lesson card" id="l3">
+            <h2><span class="num">3</span> Faux appels et faux support technique</h2>
+            <p>Le <strong>vishing</strong> (phishing vocal) passe par le téléphone. La voix humaine inspire confiance et l'appel ne laisse pas le temps de réfléchir. Le numéro affiché peut même être falsifié (« spoofing ») pour ressembler à celui de votre banque ou de votre entreprise.</p>
+            <h3>Les scénarios les plus fréquents</h3>
+            <ul>
+              <li><strong>Faux support technique</strong> : « Votre ordinateur est infecté, installez ce logiciel pour que je règle le problème. » Le logiciel donne à l'escroc le contrôle total de votre poste.</li>
+              <li><strong>Faux conseiller bancaire</strong> : « Des paiements suspects sont en cours, donnez-moi le code reçu par SMS pour les annuler. » Le code sert en réalité à valider un paiement.</li>
+              <li><strong>Faux service informatique interne</strong> : « On migre les comptes, j'ai besoin de votre mot de passe. »</li>
+            </ul>
+            <p>Bientôt, ces appels pourront aussi utiliser des voix imitées par intelligence artificielle (« deepfake vocal ») : une voix familière ne suffit plus à prouver une identité.</p>
+            <div class="callout faire">
+              <div class="callout-title">✓ Que faire ?</div>
+              <ul>
+                <li>Ne communiquez <strong>jamais</strong> un mot de passe ou un code reçu par SMS au téléphone.</li>
+                <li>N'installez aucun logiciel à la demande d'un appelant.</li>
+                <li>Raccrochez et rappelez vous-même l'organisme, au numéro officiel que vous connaissez.</li>
+              </ul>
+            </div>
+            <div class="lesson-foot"><button type="button" class="btn btn-secondary mark-read" data-lesson="l3" aria-pressed="false">Marquer comme lu</button></div>
+          </article>
+
+          <article class="lesson card" id="l4">
+            <h2><span class="num">4</span> L'arnaque au président (FOVI)</h2>
+            <p>La <strong>fraude aux faux ordres de virement</strong> vise surtout les services comptables, achats et les assistants de direction. L'escroc se fait passer pour un dirigeant, un fournisseur ou un avocat afin d'obtenir un virement.</p>
+            <h3>La recette de l'escroc</h3>
+            <div class="grid grid-2">
+              <div class="example-box mt-0"><strong>Autorité</strong><br>« C'est le PDG qui demande. »</div>
+              <div class="example-box mt-0"><strong>Urgence</strong><br>« Il faut que ce soit fait avant 16 h. »</div>
+              <div class="example-box mt-0"><strong>Confidentialité</strong><br>« N'en parlez à personne, c'est une opération sensible. »</div>
+              <div class="example-box mt-0"><strong>Flatterie</strong><br>« Je compte sur vous, vous êtes la seule personne de confiance. »</div>
+            </div>
+            <p style="margin-top:16px">Une variante très courante est le <strong>changement de RIB</strong> : un faux fournisseur annonce de nouvelles coordonnées bancaires pour ses prochaines factures.</p>
+            <div class="callout faire">
+              <div class="callout-title">✓ Que faire ?</div>
+              <ul>
+                <li>Respectez toujours la procédure de validation des virements, même sous la pression.</li>
+                <li>Faites un contre-appel sur un numéro connu (annuaire interne, dossier fournisseur), jamais celui du message.</li>
+                <li>Une demande de secret est une raison de plus d'en parler à votre responsable.</li>
+              </ul>
+            </div>
+            <div class="lesson-foot"><button type="button" class="btn btn-secondary mark-read" data-lesson="l4" aria-pressed="false">Marquer comme lu</button></div>
+          </article>
+
+          <article class="lesson card" id="l5">
+            <h2><span class="num">5</span> Réseaux sociaux et informations exposées</h2>
+            <p>Avant d'attaquer, les escrocs se renseignent. Votre profil LinkedIn, vos photos et vos publications leur permettent de rédiger un message <strong>très crédible et personnalisé</strong> : c'est le <strong>spear phishing</strong> (hameçonnage ciblé).</p>
+            <div class="example-box">
+              <strong>Exemple :</strong> vous publiez « Ravie de rejoindre le service comptabilité de MonEntreprise ! ». Quelques jours plus tard, vous recevez un « mail du directeur financier » qui vous souhaite la bienvenue… et vous demande de traiter un virement urgent.
+            </div>
+            <h3>Ce qu'il vaut mieux ne pas publier</h3>
+            <ul>
+              <li>Photos de votre badge, de votre écran, de tableaux blancs ou de documents internes.</li>
+              <li>Organigrammes, noms d'outils ou de logiciels utilisés en interne.</li>
+              <li>Vos absences et déplacements en temps réel.</li>
+            </ul>
+            <p>Méfiez-vous aussi des faux profils (recruteurs, partenaires) qui cherchent à vous faire ouvrir un fichier ou cliquer sur un lien.</p>
+            <div class="callout retenir">
+              <div class="callout-title">À retenir</div>
+              <p>Plus un attaquant en sait sur vous, plus son piège sera convaincant. Réglez la confidentialité de vos comptes et réfléchissez avant de publier.</p>
+            </div>
+            <div class="lesson-foot"><button type="button" class="btn btn-secondary mark-read" data-lesson="l5" aria-pressed="false">Marquer comme lu</button></div>
+          </article>
+
+          <article class="lesson card" id="l6">
+            <h2><span class="num">6</span> J'ai cliqué : que faire ?</h2>
+            <p>Personne n'est infaillible. L'erreur la plus grave n'est pas de se faire piéger, c'est de <strong>ne rien dire</strong>. Plus l'alerte est donnée tôt, plus les dégâts sont limités.</p>
+            <ol class="reflexes">
+              <li><span><strong>Déconnectez l'appareil du réseau</strong> (câble, Wi-Fi) si vous avez ouvert une pièce jointe ou installé quelque chose. Ne l'éteignez pas : cela pourrait effacer des traces utiles.</span></li>
+              <li><span><strong>Prévenez immédiatement le service informatique</strong>, par téléphone ou en personne.</span></li>
+              <li><span><strong>Changez votre mot de passe</strong> depuis un appareil sain, si vous l'avez saisi sur une fausse page, ainsi que sur les autres sites où vous l'utilisiez.</span></li>
+              <li><span><strong>Contactez votre banque</strong> si vous avez donné des coordonnées bancaires, pour faire opposition.</span></li>
+              <li><span><strong>Gardez le message</strong> : ne le supprimez pas, il servira à l'analyse et à prévenir les collègues.</span></li>
+            </ol>
+            <div class="callout faire" style="margin-top:16px">
+              <div class="callout-title">✓ Signaler pour protéger les autres</div>
+              <p>Mails : <a href="https://www.signal-spam.fr" target="_blank" rel="noopener">signal-spam.fr</a> · SMS : <strong>33700</strong> · Aide aux victimes : <a href="https://www.17cyber.gouv.fr" target="_blank" rel="noopener">17cyber.gouv.fr</a>. Retrouvez tous les contacts sur la page <a href="../ressources.html">Ressources</a>.</p>
+            </div>
+            <div class="lesson-foot"><button type="button" class="btn btn-secondary mark-read" data-lesson="l6" aria-pressed="false">Marquer comme lu</button></div>
+          </article>
+
+          <div class="card center">
+            <h2>Prêt à vous entraîner ?</h2>
+            <p class="muted">Mettez ces réflexes en pratique avec les simulateurs, puis testez-vous avec le QCM.</p>
+            <div class="btn-row" style="justify-content:center">
+              <a class="btn btn-primary" href="simulateurs.html">Ouvrir les simulateurs</a>
+              <a class="btn btn-secondary" href="quiz.html">Passer le QCM</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="../assets/js/storage.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script>UI.trackLessons('salaries.coursLus', document.getElementById('course-progress'));</script>
+</body>
+</html>

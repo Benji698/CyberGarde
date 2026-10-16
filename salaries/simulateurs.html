@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simulateurs — CyberTruck</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231f56d6' stroke-width='2'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/theme.js"></script>
+</head>
+<body data-root="../" data-section="salaries">
+  <header id="site-header"></header>
+
+  <main>
+    <div class="container page-head">
+      <div class="breadcrumb"><a href="index.html">Parcours salarié</a> › Simulateurs</div>
+      <h1>Simulateurs</h1>
+      <p class="lead">Entraînez-vous sans risque : tous les messages ci-dessous sont des imitations, aucun lien n'est réel.</p>
+    </div>
+
+    <div class="container section-sm">
+      <div class="sim-tabs" role="tablist" aria-label="Choix du simulateur">
+        <button type="button" role="tab" data-tab="indices" aria-controls="panel-indices" id="tab-indices">🔍 Chasse aux indices</button>
+        <button type="button" role="tab" data-tab="vraifaux" aria-controls="panel-vraifaux" id="tab-vraifaux">⚖️ Vrai ou piège ?</button>
+        <button type="button" role="tab" data-tab="appel" aria-controls="panel-appel" id="tab-appel">📞 Le coup de fil</button>
+      </div>
+
+      <section class="sim-panel" id="panel-indices" role="tabpanel" aria-labelledby="tab-indices"></section>
+      <section class="sim-panel" id="panel-vraifaux" role="tabpanel" aria-labelledby="tab-vraifaux" hidden></section>
+      <section class="sim-panel" id="panel-appel" role="tabpanel" aria-labelledby="tab-appel" hidden></section>
+
+      <div class="btn-row" style="margin-top:32px">
+        <a class="btn btn-secondary" href="index.html">← Retour au parcours</a>
+        <a class="btn btn-primary" href="quiz.html">Passer au QCM →</a>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="../assets/js/storage.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script src="../data/salaries-sims.js"></script>
+  <script src="../assets/js/simulators.js"></script>
+</body>
+</html>

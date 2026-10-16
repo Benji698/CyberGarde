@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scénario IT — CyberTruck</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231f56d6' stroke-width='2'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/theme.js"></script>
+</head>
+<body data-root="../" data-section="it">
+  <header id="site-header"></header>
+
+  <main>
+    <div class="container narrow page-head">
+      <div class="breadcrumb"><a href="index.html">Parcours IT</a> › <span id="crumb"></span></div>
+    </div>
+    <div class="container narrow section-sm" id="game"></div>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="../assets/js/storage.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script src="../data/it-levels.js"></script>
+  <script src="../assets/js/scenario-engine.js"></script>
+  <script>
+    var id = Math.min(5, Math.max(1, parseInt(UI.param('niveau'), 10) || 1));
+    var lvl = DATA_IT.niveaux[id - 1];
+    var host = document.getElementById('game');
+    document.title = 'Niveau ' + id + ' · ' + lvl.rang + ' — Scénario — CyberTruck';
+    document.getElementById('crumb').textContent = 'Niveau ' + id + ' · ' + lvl.rang;
+    if (!ScenarioEngine.Progress.isUnlocked(id)) {
+      host.innerHTML = '<div class="card center"><div style="font-size:2.5rem" aria-hidden="true">🔒</div><h2>Niveau verrouillé</h2>' +
+        '<p class="muted">Validez le niveau ' + (id - 1) + ' avec au moins ' + ScenarioEngine.PASS + ' % de bonnes décisions pour débloquer ce scénario.</p>' +
+        '<div class="btn-row" style="justify-content:center"><a class="btn btn-primary" href="jeu.html?niveau=' + (id - 1) + '">Jouer le niveau ' + (id - 1) + '</a>' +
+        '<a class="btn btn-secondary" href="cours.html?niveau=' + id + '">Lire le cours du niveau ' + id + '</a></div></div>';
+    } else {
+      ScenarioEngine.mount(host, lvl);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Parcours IT — CyberTruck</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231f56d6' stroke-width='2'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/theme.js"></script>
+</head>
+<body data-root="../" data-section="it">
+  <header id="site-header"></header>
+
+  <main>
+    <div class="container page-head">
+      <div class="breadcrumb"><a href="../index.html">Accueil</a> › Parcours IT</div>
+      <h1>Parcours étudiant IT</h1>
+      <p class="lead">Cinq niveaux, du stagiaire au RSSI. Chaque niveau associe un cours théorique et un scénario d'attaque où vos décisions changent la suite. Validez un niveau avec 70 % de bonnes décisions pour débloquer le suivant.</p>
+    </div>
+
+    <div class="container section-sm">
+      <div class="card player-bar" id="player" style="margin-bottom:28px"></div>
+      <h2>Les niveaux</h2>
+      <div class="level-map" id="levels"></div>
+
+      <h2 style="margin-top:40px">Badges</h2>
+      <p class="muted" id="badge-count"></p>
+      <div class="badge-grid" id="badges"></div>
+
+      <div class="btn-row" style="margin-top:28px">
+        <button type="button" class="btn btn-danger" id="reset">Réinitialiser ma progression IT</button>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="../assets/js/storage.js"></script>
+  <script src="../assets/js/ui.js"></script>
+  <script src="../data/it-levels.js"></script>
+  <script src="../assets/js/scenario-engine.js"></script>
+  <script>
+    var P = ScenarioEngine.Progress;
+    function render() {
+      var rank = P.rank();
+      var passed = P.passedIds().length;
+      document.getElementById('player').innerHTML =
+        '<div class="player-rank"><div class="rank-icon">' + UI.icons.trophy + '</div><div><small class="muted">Rang actuel</small><br><strong style="font-size:1.3rem">' + rank.nom + '</strong><br><small class="muted">' + rank.desc + '</small></div></div>' +
+        '<div>' + UI.progressBar(passed / 5 * 100, passed + ' / 5 niveaux validés', 'accent') + '</div>' +
+        '<div class="center"><small class="muted">Expérience</small><br><strong style="font-size:1.6rem">' + P.totalXp() + ' XP</strong></div>';
+
+      document.getElementById('levels').innerHTML = DATA_IT.niveaux.map(function (n) {
+        var rec = P.level(n.id) || {};
+        var unlocked = P.isUnlocked(n.id);
+        var cls = rec.passed ? 'done' : unlocked ? '' : 'locked';
+        var status = rec.passed
+          ? ScenarioEngine.starsHtml(P.stars(rec.best)) + ' <span class="tag ok">✓ Validé · ' + rec.best + ' %</span>'
+          : unlocked ? (rec.attempts ? '<span class="tag warn">À retenter</span>' : '<span class="tag info">Disponible</span>')
+          : '<span class="tag">🔒 Validez le niveau ' + (n.id - 1) + '</span>';
+        return '<article class="card level-card ' + cls + '">' +
+          '<div class="level-num" aria-hidden="true">' + (unlocked ? n.id : '🔒') + '</div>' +
+          '<div><h3>Niveau ' + n.id + ' · ' + n.rang + '</h3><p class="muted">' + n.resume + '</p>' + status + '</div>' +
+          '<div class="level-actions">' +
+            '<a class="btn btn-secondary" href="cours.html?niveau=' + n.id + '">📘 Cours</a>' +
+            (unlocked ? '<a class="btn btn-primary" href="jeu.html?niveau=' + n.id + '">🎮 Scénario</a>'
+                      : '<span class="btn btn-secondary" aria-disabled="true">🔒 Scénario</span>') +
+          '</div></article>';
+      }).join('');
+
+      var owned = P.badges();
+      document.getElementById('badge-count').textContent = owned.length + ' / ' + DATA_IT.badges.length + ' badges obtenus';
+      document.getElementById('badges').innerHTML = DATA_IT.badges.map(function (b) {
+        return ScenarioEngine.badgeHtml(b, owned.indexOf(b.id) !== -1);
+      }).join('');
+    }
+    document.getElementById('reset').addEventListener('click', function () {
+      if (confirm('Effacer toute votre progression du parcours IT (niveaux, XP, badges) ?')) { Store.reset('it'); render(); }
+    });
+    render();
+  </script>
+</body>
+</html>
