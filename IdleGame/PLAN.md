@@ -12,7 +12,7 @@
 
 | Phase | Statut | Détails |
 |-------|--------|---------|
-| 1. Découverte (concept) | 🟡 En cours | Groupes 1-7 répondus · recherches images et monétisation faites · groupe 8 (images) puis groupe 9 (argent) en cours |
+| 1. Découverte (concept) | 🟡 En cours | Groupes 1-8 répondus · groupe 9 en cours (budget, modèle économique, boutique) |
 | 2. Choix technique | ⚪ À faire | — |
 | 3. Plan de projet (GDD + archi + roadmap) | ⚪ À faire | — |
 | 4. Développement | ⚪ À faire | — |
@@ -30,7 +30,7 @@ Objectif : construire le concept avant d'écrire une ligne de code.
 - [x] Thème / univers / ambiance
 - [x] Durée des sessions et public cible
 - [x] Boucle de jeu principale (ressources, upgrades, prestige)
-- [ ] Style visuel et sonore (contrainte : pas de graphiste) _(son choisi, style choisi ; sources d'images en recherche)_
+- [x] Style visuel et sonore (contrainte : pas de graphiste)
 - [ ] Monétisation (impact validation Apple)
 - [x] Fonctionnalités (iCloud, Game Center, notifications, langues)
 - [x] Temps disponible / niveau d'ambition
@@ -54,8 +54,9 @@ Objectif : construire le concept avant d'écrire une ligne de code.
 | Compétences | Gagnées sur les boss ou à la forge, **jamais tirées au sort contre de l'argent** (différence avec Sword x Staff) | 2026-10-18 |
 | Forme de l'empire | Écran "liste de bâtiments" à améliorer (mine, scierie, forge…), une icône par bâtiment | 2026-10-18 |
 | Jeu de référence | **Sword x Staff**. Ce que Benji aime : le combat piloté par le build, le style graphique, la progression et l'équipement. Analyse complète : [`docs/reference-sword-x-staff.md`](docs/reference-sword-x-staff.md) | 2026-10-18 |
-| Univers | **Magie sans médiéval** : magie, esprits, brume, inspiration orientale. Pas de chevaliers, châteaux, royaumes ni dragons | 2026-10-18 |
-| Style graphique | 2D cartoon soigné, dans l'esprit de Sword x Staff (sans copier ses visuels). Sources d'images à choisir | 2026-10-18 |
+| Univers | **Magie sans médiéval européen** : magie, esprits, brume, inspiration orientale. Pas de chevaliers, châteaux ni dragons. **Japon féodal accepté** (samouraïs, ninjas, katanas), héros compris | 2026-10-18 |
+| Style graphique | **Chibi vectoriel** (grosse tête, petit corps, contours nets), dans l'esprit de Sword x Staff sans copier ses visuels. Pas de pixel art (ne se mélange pas avec le vectoriel) | 2026-10-18 |
+| Héros | **Provisoire** pendant le développement : Chibi Swordman (sonild, CC0 à vérifier) ; alternative : ninja pzUH (CC0 à vérifier). Le héros final (commande à un artiste ou kit en pièces) se choisit avant la sortie publique, quand le budget sera clair | 2026-10-18 |
 | Temps disponible | 5 à 10 h par semaine | 2026-10-18 |
 | Ambition | **Jeu complet, sans se précipiter.** Objectif : apprendre à publier sur iOS | 2026-10-18 |
 | Chemin de publication (proposé) | Sortie publique = jeu complet. Mais le MVP passe par **TestFlight** dès qu'il tourne, pour apprendre toute la chaîne (signature, archive, envoi, review) bien avant la vraie sortie | 2026-10-18 |
@@ -209,3 +210,5 @@ Checklist à remplir au moment de la soumission.
 - Réponses groupe 7 : les 4 fonctionnalités, FR + EN, hors ligne au départ (en ligne peut-être plus tard). Étalement proposé (MVP sans compte payant), alerte sur la triche à l'horloge
 - Recherche images + monétisation terminée (après une relance : limite de session atteinte au 1er essai). Règles Apple vérifiées sur developer.apple.com. Aucun héros idéal trouvé. Dépôt GitHub public signalé
 - Groupe 8 envoyé : rendu des personnages, éléments féodaux, approche pour le héros
+- Réponses groupe 8 : chibi vectoriel, Japon féodal accepté (héros compris), héros provisoire puis choix final avant la sortie
+- Groupe 9 envoyé : budget, modèle économique, boutique (prix direct ou monnaie premium)
