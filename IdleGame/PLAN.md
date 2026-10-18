@@ -12,7 +12,7 @@
 
 | Phase | Statut | Détails |
 |-------|--------|---------|
-| 1. Découverte (concept) | 🟡 En cours | Groupes 1-4 répondus · groupe 5 répondu en partie · recherche sur le jeu de référence Sword x Staff en cours |
+| 1. Découverte (concept) | 🟡 En cours | Groupes 1-4 répondus · groupe 5 répondu en partie · Sword x Staff analysé · groupe 5 bis en cours (ce qui plaît, univers, combat) |
 | 2. Choix technique | ⚪ À faire | — |
 | 3. Plan de projet (GDD + archi + roadmap) | ⚪ À faire | — |
 | 4. Développement | ⚪ À faire | — |
@@ -52,7 +52,7 @@ Objectif : construire le concept avant d'écrire une ligne de code.
 | Ce que l'Ascension réinitialise | Seulement l'empire et l'or. Le guerrier **garde** équipement, cosmétiques et talents. Le monde suivant, plus dur, rend l'ancien équipement obsolète petit à petit | 2026-10-18 |
 | Combat | Temps réel automatique, vue de côté. En jeu actif : compétences à recharge (coup puissant, bouclier…), indispensables contre les boss | 2026-10-18 |
 | Forme de l'empire | Écran "liste de bâtiments" à améliorer (mine, scierie, forge…), une icône par bâtiment | 2026-10-18 |
-| Jeu de référence | Style de combat et univers proches de **Sword x Staff**. **Pas d'univers médiéval / mythologique** | 2026-10-18 |
+| Jeu de référence | Style de combat et univers proches de **Sword x Staff**. **Pas d'univers médiéval / mythologique**. Analyse complète : [`docs/reference-sword-x-staff.md`](docs/reference-sword-x-staff.md) | 2026-10-18 |
 | Équipement visible | Par palier : l'arme change à l'écran, l'armure change de couleur ou brille selon la rareté. Le détail passe par les icônes | 2026-10-18 |
 | Audio (MVP) | Bruitages Kenney (CC0, sans crédit) + musique Kevin MacLeod (CC BY 4.0, crédit obligatoire). Licences à revérifier au téléchargement | 2026-10-18 |
 
@@ -76,6 +76,9 @@ Objectif : construire le concept avant d'écrire une ligne de code.
 - **Ascension légère** : comme le guerrier garde son équipement, le reset coûte peu. C'est plutôt un changement de chapitre. À calibrer en Phase 3 : le début du monde suivant doit défiler vite avec l'équipement actuel, puis ralentir pour pousser à forger et à farmer du butin.
 - **Licences anti-IA** : le code du jeu est écrit avec l'aide d'une IA. Certains artistes interdisent leurs assets dans tout jeu qui utilise de l'IA, code compris (ex. Mana Seed : clause confirmée par le fichier « NO AI, NO EXCEPTIONS.txt » du pack). Ces licences sont exclues d'office.
 - **Registre des assets** : tenir un tableau source / licence / date / reçu, et sauvegarder chaque page de licence (PDF ou capture) le jour du téléchargement. Apple peut demander une preuve de droits (règle 5.2.1).
+- **Ne pas copier Sword x Staff** : règles Apple 4.1 (copies), 4.3(b), 5.2.1 (propriété intellectuelle) et 2.3.7 (métadonnées), version du 16/10/2026 lue sur developer.apple.com. On reprend des mécaniques, jamais ses noms, visuels, interface ou chiffres exacts, ni le nom « Sword x Staff » dans la fiche App Store (même « comme Sword x Staff »).
+- **Sword x Staff contredit deux de nos choix** : son univers est une fantasy magique (royaumes, mages, dragons), et son style est décrit comme « mignon / cosy ». Or on a dit « pas de médiéval » et « épique ». À clarifier avec Benji.
+- **Monétisation** : Sword x Staff vend surtout de la puissance (tirages, carte mensuelle, passes). Notre modèle cosmétique est plus sain pour un public expert, mais rapporte souvent moins. À trancher au groupe monétisation.
 
 ### Pistes d'assets (recherche du 2026-10-18, vérification partielle)
 
@@ -175,3 +178,5 @@ Checklist à remplir au moment de la soumission.
 - Groupe 5 envoyé : style graphique, affichage de l'équipement sur le guerrier, audio
 - Réponses groupe 5 : équipement par palier, audio Kenney + Kevin MacLeod. Style : combat et univers proches de Sword x Staff, pas de médiéval. Les sources visuelles médiévales sont à réévaluer
 - Recherche lancée sur Sword x Staff (combat, univers, style graphique) et sur des assets légaux qui s'en rapprochent
+- Recherche terminée : jeu identifié (Boltray Games, sorti le 19/05/2026), analyse dans `docs/reference-sword-x-staff.md`. Deux conflits relevés (univers fantasy magique, style mignon). Règles Apple anti-copie vérifiées
+- Groupe 5 bis envoyé : ce qui plaît dans Sword x Staff, direction d'univers, format du combat. Le choix des sources d'images attend la réponse sur l'univers
