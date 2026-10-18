@@ -12,7 +12,7 @@
 
 | Phase | Statut | Détails |
 |-------|--------|---------|
-| 1. Découverte (concept) | 🟡 En cours | Groupes 1-3 répondus · groupe 4 en cours (reset du prestige, combat, forme de l'empire) |
+| 1. Découverte (concept) | 🟡 En cours | Groupes 1-4 répondus (gameplay bouclé) · recherche d'assets en cours avant le groupe 5 (style visuel et sonore) |
 | 2. Choix technique | ⚪ À faire | — |
 | 3. Plan de projet (GDD + archi + roadmap) | ⚪ À faire | — |
 | 4. Développement | ⚪ À faire | — |
@@ -29,7 +29,7 @@ Objectif : construire le concept avant d'écrire une ligne de code.
 ### Thèmes à couvrir
 - [x] Thème / univers / ambiance
 - [x] Durée des sessions et public cible
-- [ ] Boucle de jeu principale (ressources, upgrades, prestige) _(presque fini : reste le reset du prestige, le combat et la forme de l'empire)_
+- [x] Boucle de jeu principale (ressources, upgrades, prestige)
 - [ ] Style visuel et sonore (contrainte : pas de graphiste)
 - [ ] Monétisation (impact validation Apple)
 - [ ] Fonctionnalités (iCloud, Game Center, notifications, langues)
@@ -49,6 +49,9 @@ Objectif : construire le concept avant d'écrire une ligne de code.
 | Obtention de l'équipement | Forge (base fiable) + butin des ennemis/boss (raretés commun → légendaire) | 2026-10-18 |
 | Prestige | **Ascension en fin de monde** : battre le boss final d'un monde de N niveaux débloque le monde suivant + un bonus permanent | 2026-10-18 |
 | Sources de puissance | Par ordre d'importance : 1) équipement, 2) niveau et talents du guerrier, 3) bonus de l'empire, 4) prestige (multiplicateur modéré, pas le moteur principal) | 2026-10-18 |
+| Ce que l'Ascension réinitialise | Seulement l'empire et l'or. Le guerrier **garde** équipement, cosmétiques et talents. Le monde suivant, plus dur, rend l'ancien équipement obsolète petit à petit | 2026-10-18 |
+| Combat | Temps réel automatique, vue de côté. En jeu actif : compétences à recharge (coup puissant, bouclier…), indispensables contre les boss | 2026-10-18 |
+| Forme de l'empire | Écran "liste de bâtiments" à améliorer (mine, scierie, forge…), une icône par bâtiment | 2026-10-18 |
 
 ### Boucle de jeu (proposition validée, focus guerrier)
 1. L'empire produit en continu (or, matériaux), même hors-ligne
@@ -67,6 +70,7 @@ Objectif : construire le concept avant d'écrire une ligne de code.
 - **Public expert = rejet du pay-to-win** : monétiser par les cosmétiques plutôt que par la puissance. À trancher au groupe "monétisation".
 - **Grands nombres** : les joueurs experts dépassent vite les milliards. Prévoir l'affichage (K, M, B… ou notation scientifique) et, à terme, un type numérique au-delà de la limite de `Double` (~1,8e308). Pour le MVP, un seul niveau de prestige.
 - **Butin aléatoire + achats** : si l'équipement aléatoire peut s'obtenir contre de l'argent réel, Apple impose d'afficher les probabilités (règles "loot boxes"). À garder en tête.
+- **Ascension légère** : comme le guerrier garde son équipement, le reset coûte peu. C'est plutôt un changement de chapitre. À calibrer en Phase 3 : le début du monde suivant doit défiler vite avec l'équipement actuel, puis ralentir pour pousser à forger et à farmer du butin.
 
 ---
 
@@ -115,3 +119,5 @@ Checklist à remplir au moment de la soumission.
 - Groupe 3 envoyé : boucle de jeu, source de l'équipement, thème du prestige
 - Réponses groupe 3 : focus guerrier, forge + butin, prestige lié à la fin d'un monde et pas moteur principal de puissance
 - Groupe 4 envoyé : ce que l'Ascension réinitialise, style de combat, forme de l'empire
+- Réponses groupe 4 : l'équipement est conservé à l'Ascension, combat temps réel auto + compétences, empire en liste de bâtiments. Gameplay bouclé
+- Recherche web lancée sur les sources d'assets légales (visuels en couches, icônes, IA, audio) pour préparer le groupe 5
