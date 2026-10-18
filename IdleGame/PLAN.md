@@ -12,7 +12,7 @@
 
 | Phase | Statut | Détails |
 |-------|--------|---------|
-| 1. Découverte (concept) | 🟡 En cours | Groupes 1-2 répondus · groupe 3 en cours (boucle de jeu, équipement, prestige) |
+| 1. Découverte (concept) | 🟡 En cours | Groupes 1-3 répondus · groupe 4 en cours (reset du prestige, combat, forme de l'empire) |
 | 2. Choix technique | ⚪ À faire | — |
 | 3. Plan de projet (GDD + archi + roadmap) | ⚪ À faire | — |
 | 4. Développement | ⚪ À faire | — |
@@ -29,7 +29,7 @@ Objectif : construire le concept avant d'écrire une ligne de code.
 ### Thèmes à couvrir
 - [x] Thème / univers / ambiance
 - [x] Durée des sessions et public cible
-- [ ] Boucle de jeu principale (ressources, upgrades, prestige)
+- [ ] Boucle de jeu principale (ressources, upgrades, prestige) _(presque fini : reste le reset du prestige, le combat et la forme de l'empire)_
 - [ ] Style visuel et sonore (contrainte : pas de graphiste)
 - [ ] Monétisation (impact validation Apple)
 - [ ] Fonctionnalités (iCloud, Game Center, notifications, langues)
@@ -45,6 +45,22 @@ Objectif : construire le concept avant d'écrire une ligne de code.
 | Rôle du joueur | Un guerrier qui bâtit son empire et devient plus fort grâce à de nouvelles armures | 2026-10-18 |
 | Pilier émotionnel | Attachement au personnage : cosmétiques + équipement toujours plus puissant | 2026-10-18 |
 | Public cible | Joueurs d'idle expérimentés (profondeur, optimisation, prestige) | 2026-10-18 |
+| Équilibre des axes | **Focus guerrier**, l'empire est secondaire (générateur de ressources) | 2026-10-18 |
+| Obtention de l'équipement | Forge (base fiable) + butin des ennemis/boss (raretés commun → légendaire) | 2026-10-18 |
+| Prestige | **Ascension en fin de monde** : battre le boss final d'un monde de N niveaux débloque le monde suivant + un bonus permanent | 2026-10-18 |
+| Sources de puissance | Par ordre d'importance : 1) équipement, 2) niveau et talents du guerrier, 3) bonus de l'empire, 4) prestige (multiplicateur modéré, pas le moteur principal) | 2026-10-18 |
+
+### Boucle de jeu (proposition validée, focus guerrier)
+1. L'empire produit en continu (or, matériaux), même hors-ligne
+2. Les ressources servent à forger et améliorer l'équipement
+3. Le guerrier, mieux équipé, bat des ennemis plus forts (combat auto + boss en actif), et récupère du butin
+4. Les victoires débloquent des territoires qui boostent l'empire
+5. Fin du monde (boss final) → Ascension vers le monde suivant
+
+### Contenu par monde (estimation)
+- Niveaux générés par formule (les ennemis gagnent en force à chaque niveau), pas dessinés à la main
+- Par monde : 1 décor, 5 à 8 ennemis, 1 boss final
+- MVP : 1 monde, puis 2 pour tester l'Ascension
 
 ### Points de vigilance
 - **Équipement visible sur le personnage (paperdoll)** : sprites en couches superposées (corps, casque, plastron, arme…). Poste d'assets le plus lourd du projet. Pistes : packs modulaires libres, variantes de couleur/effets par palier. À trancher au groupe "style visuel".
@@ -97,3 +113,5 @@ Checklist à remplir au moment de la soumission.
 - Groupe 2 envoyé : confirmation du format de session, rôle du joueur, public cible
 - Réponses groupe 2 : hybride, guerrier bâtisseur d'empire centré sur l'équipement et les cosmétiques, ton moins comique, public expert
 - Groupe 3 envoyé : boucle de jeu, source de l'équipement, thème du prestige
+- Réponses groupe 3 : focus guerrier, forge + butin, prestige lié à la fin d'un monde et pas moteur principal de puissance
+- Groupe 4 envoyé : ce que l'Ascension réinitialise, style de combat, forme de l'empire
