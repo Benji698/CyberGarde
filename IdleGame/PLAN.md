@@ -167,12 +167,21 @@ Mots utiles :
 
 ## Phase 2 — Choix technique
 
-À venir après la Phase 1. Options à comparer :
-- SwiftUI natif
-- SpriteKit (natif Apple, 2D)
-- Unity
-- Godot
-- React Native / Expo
+Options comparées : SwiftUI + SpriteKit (natif Apple), Unity, Godot, React Native / Expo.
+
+### Profil pris en compte
+| Sujet | Réponse | Date |
+|-------|---------|------|
+| Option BTS SIO | Pas encore choisie | 2026-10-18 |
+| Langages maîtrisés | Aucun vraiment (débutant complet) | 2026-10-18 |
+| Android | Peut-être plus tard (ne pas fermer la porte, pas prioritaire) | 2026-10-18 |
+
+### Contraintes de l'environnement de développement assisté
+- Le code est écrit par l'assistant dans un conteneur cloud **Linux** : pas de macOS, pas d'Xcode, pas de SDK iOS. **Benji compile sur son Mac** et renvoie les erreurs.
+- Outils disponibles dans le conteneur : Node 22, Python 3.13, git. **Swift absent**, et son serveur de téléchargement (download.swift.org) est bloqué par le réseau. **Godot téléchargeable** depuis GitHub.
+- Conséquence : selon la technologie choisie, l'assistant peut ou non compiler et tester une partie du code avant de l'envoyer.
+
+Comparatif vérifié en cours (recherche web + contre-vérification par technologie).
 
 ---
 
@@ -230,3 +239,5 @@ Checklist à remplir au moment de la soumission.
 - Groupe 9 envoyé : budget, modèle économique, boutique (prix direct ou monnaie premium)
 - Réponses groupe 9 : 100-300 €, cosmétiques + pubs récompensées, prix direct. Règles des pubs posées, pubs après le MVP
 - **Phase 1 terminée.** Début de la Phase 2 : question sur les langages connus, puis comparatif vérifié des technologies
+- Profil : option BTS pas choisie, aucun langage maîtrisé, Android peut-être plus tard. Vérification de l'environnement : pas de Swift (serveur bloqué), Godot téléchargeable, Node et Python disponibles
+- Comparatif des 4 technologies lancé (recherche + contre-vérification)
