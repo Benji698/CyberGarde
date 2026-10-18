@@ -12,7 +12,7 @@
 
 | Phase | Statut | Détails |
 |-------|--------|---------|
-| 1. Découverte (concept) | 🟡 En cours | Groupes 1-4 répondus (gameplay bouclé) · recherche d'assets faite (vérif partielle) · groupe 5 en cours (style, équipement visible, audio) |
+| 1. Découverte (concept) | 🟡 En cours | Groupes 1-4 répondus · groupe 5 répondu en partie · recherche sur le jeu de référence Sword x Staff en cours |
 | 2. Choix technique | ⚪ À faire | — |
 | 3. Plan de projet (GDD + archi + roadmap) | ⚪ À faire | — |
 | 4. Développement | ⚪ À faire | — |
@@ -52,6 +52,9 @@ Objectif : construire le concept avant d'écrire une ligne de code.
 | Ce que l'Ascension réinitialise | Seulement l'empire et l'or. Le guerrier **garde** équipement, cosmétiques et talents. Le monde suivant, plus dur, rend l'ancien équipement obsolète petit à petit | 2026-10-18 |
 | Combat | Temps réel automatique, vue de côté. En jeu actif : compétences à recharge (coup puissant, bouclier…), indispensables contre les boss | 2026-10-18 |
 | Forme de l'empire | Écran "liste de bâtiments" à améliorer (mine, scierie, forge…), une icône par bâtiment | 2026-10-18 |
+| Jeu de référence | Style de combat et univers proches de **Sword x Staff**. **Pas d'univers médiéval / mythologique** | 2026-10-18 |
+| Équipement visible | Par palier : l'arme change à l'écran, l'armure change de couleur ou brille selon la rareté. Le détail passe par les icônes | 2026-10-18 |
+| Audio (MVP) | Bruitages Kenney (CC0, sans crédit) + musique Kevin MacLeod (CC BY 4.0, crédit obligatoire). Licences à revérifier au téléchargement | 2026-10-18 |
 
 ### Boucle de jeu (proposition validée, focus guerrier)
 1. L'empire produit en continu (or, matériaux), même hors-ligne
@@ -75,6 +78,8 @@ Objectif : construire le concept avant d'écrire une ligne de code.
 - **Registre des assets** : tenir un tableau source / licence / date / reçu, et sauvegarder chaque page de licence (PDF ou capture) le jour du téléchargement. Apple peut demander une preuve de droits (règle 5.2.1).
 
 ### Pistes d'assets (recherche du 2026-10-18, vérification partielle)
+
+> ⚠️ **À réévaluer** : Benji ne veut pas d'univers médiéval. Les sources visuelles fantasy médiévales ci-dessous (CraftPix Knight/Orcs/Trolls, LPC) ne conviennent sans doute plus. Les sources neutres (icônes, interface, audio) restent valables.
 
 **Limites de la vérification** : l'environnement cloud n'a pas pu ouvrir beaucoup de sites (itch.io, opengameart.org, kenney.nl, craftpix.net, incompetech.com, creativecommons.org…), et le quota de recherches a été épuisé en cours de route. Vérifié sur source primaire : règles Apple (version du 16/10/2026), licences LPC (dépôt GitHub), clause anti-IA de Mana Seed. Le reste repose sur des extraits de recherche ou n'a pas été revérifié (audio en particulier). À revérifier au moment du téléchargement.
 
@@ -168,3 +173,5 @@ Checklist à remplir au moment de la soumission.
 - Recherche web lancée sur les sources d'assets légales (visuels en couches, icônes, IA, audio) pour préparer le groupe 5
 - Recherche terminée : vérification partielle (beaucoup de sites inaccessibles depuis l'environnement cloud). Résultats dans « Pistes d'assets ». Licences anti-IA exclues d'office
 - Groupe 5 envoyé : style graphique, affichage de l'équipement sur le guerrier, audio
+- Réponses groupe 5 : équipement par palier, audio Kenney + Kevin MacLeod. Style : combat et univers proches de Sword x Staff, pas de médiéval. Les sources visuelles médiévales sont à réévaluer
+- Recherche lancée sur Sword x Staff (combat, univers, style graphique) et sur des assets légaux qui s'en rapprochent
