@@ -12,8 +12,8 @@
 
 | Phase | Statut | Détails |
 |-------|--------|---------|
-| 1. Découverte (concept) | 🟡 En cours | Groupes 1-8 répondus · groupe 9 en cours (budget, modèle économique, boutique) |
-| 2. Choix technique | ⚪ À faire | — |
+| 1. Découverte (concept) | 🟢 Fait | 9 groupes de questions répondus, concept validé (voir synthèse ci-dessous) |
+| 2. Choix technique | 🟡 En cours | Question sur tes langages connus, puis comparatif vérifié des technologies |
 | 3. Plan de projet (GDD + archi + roadmap) | ⚪ À faire | — |
 | 4. Développement | ⚪ À faire | — |
 | 5. Soumission App Store | ⚪ À faire | — |
@@ -31,10 +31,19 @@ Objectif : construire le concept avant d'écrire une ligne de code.
 - [x] Durée des sessions et public cible
 - [x] Boucle de jeu principale (ressources, upgrades, prestige)
 - [x] Style visuel et sonore (contrainte : pas de graphiste)
-- [ ] Monétisation (impact validation Apple)
+- [x] Monétisation (impact validation Apple)
 - [x] Fonctionnalités (iCloud, Game Center, notifications, langues)
 - [x] Temps disponible / niveau d'ambition
-- [ ] Contraintes (budget, matériel, iPhone de test) _(matériel OK ; budget demandé avec la monétisation)_
+- [x] Contraintes (budget, matériel, iPhone de test)
+
+### Synthèse du concept (fin de Phase 1)
+Un **idle RPG en 2D chibi vectoriel**, dans un univers magique d'inspiration orientale (esprits, brume, Japon féodal accepté, pas de médiéval européen), pour **joueurs d'idle expérimentés**.
+- **Le héros** : un guerrier à l'épée, puissant surtout grâce à son **équipement** (forge + butin, raretés, sets), qui combat **automatiquement** selon un build de compétences réglé par le joueur.
+- **L'empire** : une liste de bâtiments qui produit les ressources, même hors ligne.
+- **Les mondes** : chacun se termine par un boss, puis l'**Ascension** vers le monde suivant (on garde équipement, cosmétiques et talents).
+- **Technique** : 100 % hors ligne, FR + EN. iCloud, Game Center, notifications et iPad viennent par étapes.
+- **Économie** : gratuit, cosmétiques à prix direct + pubs récompensées optionnelles, jamais de pay-to-win ni de tirage payant.
+- **Projet** : jeu complet sans précipitation, TestFlight dès le MVP, 5 à 10 h par semaine, budget de 100 à 300 € (+ 99 USD/an pour le compte Apple).
 
 ### Décisions prises
 | Sujet | Choix | Date |
@@ -56,6 +65,11 @@ Objectif : construire le concept avant d'écrire une ligne de code.
 | Jeu de référence | **Sword x Staff**. Ce que Benji aime : le combat piloté par le build, le style graphique, la progression et l'équipement. Analyse complète : [`docs/reference-sword-x-staff.md`](docs/reference-sword-x-staff.md) | 2026-10-18 |
 | Univers | **Magie sans médiéval européen** : magie, esprits, brume, inspiration orientale. Pas de chevaliers, châteaux ni dragons. **Japon féodal accepté** (samouraïs, ninjas, katanas), héros compris | 2026-10-18 |
 | Style graphique | **Chibi vectoriel** (grosse tête, petit corps, contours nets), dans l'esprit de Sword x Staff sans copier ses visuels. Pas de pixel art (ne se mélange pas avec le vectoriel) | 2026-10-18 |
+| Budget | **100 à 300 €** en plus du compte Apple (99 USD/an). Priorité : le héros final, puis des packs d'ennemis et de décors cohérents | 2026-10-18 |
+| Modèle économique | **Gratuit + cosmétiques + pubs récompensées optionnelles**. Jamais de pay-to-win ni de tirage payant | 2026-10-18 |
+| Boutique | **Prix direct en euros** : chaque cosmétique est un achat non consommable, gardé à vie et restauré par Apple. Pas de monnaie premium | 2026-10-18 |
+| Compte Apple (proposé) | Compte **individuel**, payé au moment où le MVP part sur TestFlight. Inscription au Small Business Program (15 %) avant la première vente | 2026-10-18 |
+| Pubs (proposé) | Branchées **après le MVP** (phase de finition), code prévu pour les accueillir dès le départ | 2026-10-18 |
 | Héros | **Provisoire** pendant le développement : Chibi Swordman (sonild, CC0 à vérifier) ; alternative : ninja pzUH (CC0 à vérifier). Le héros final (commande à un artiste ou kit en pièces) se choisit avant la sortie publique, quand le budget sera clair | 2026-10-18 |
 | Temps disponible | 5 à 10 h par semaine | 2026-10-18 |
 | Ambition | **Jeu complet, sans se précipiter.** Objectif : apprendre à publier sur iOS | 2026-10-18 |
@@ -91,6 +105,8 @@ Objectif : construire le concept avant d'écrire une ligne de code.
 - **Ne pas copier Sword x Staff** : règles Apple 4.1 (copies), 4.3(b), 5.2.1 (propriété intellectuelle) et 2.3.7 (métadonnées), version du 16/10/2026 lue sur developer.apple.com. On reprend des mécaniques, jamais ses noms, visuels, interface ou chiffres exacts, ni le nom « Sword x Staff » dans la fiche App Store (même « comme Sword x Staff »).
 - **Conflits avec Sword x Staff (résolus)** : univers → « magie sans médiéval » ; style → mignon accepté, comique refusé.
 - **Jeu complet à 5-10 h/semaine = projet long** : probablement un an ou plus (à chiffrer en Phase 3). Risque principal en solo : la perte de motivation. Parades : jalons jouables réguliers, TestFlight dès le MVP, périmètre « complet » défini noir sur blanc en Phase 3.
+- **Règles des pubs récompensées** : toujours optionnelles, jamais nécessaires pour progresser, bonus modeste et plafonné (ex. ×2 gains hors ligne, quelques fois par jour). Les achats marchent sans consentement au suivi (5.1.1(ii)), et aucun bonus n'est donné pour accepter le suivi (5.1.2(i)). Obligations : consentement RGPD (Google UMP), bouton « signaler une pub » (2.5.18), fiche App Privacy complète, ATT si suivi (en France, version UE de la fenêtre à partir d'iOS 27.2), politique de confidentialité en ligne. Détails : `docs/monetisation-regles-apple.md`.
+- **Argent réel** : ne compter sur aucun revenu. Avant la première vente : statut « trader » (DSA, coordonnées publiques sur la fiche UE), inscription au Small Business Program et statut fiscal en France à étudier.
 - **Dépôt GitHub public** : `Benji698/cybertruck` est public. Ne jamais y pousser d'images payantes (redistribution interdite par leurs licences). Le code du jeu y serait visible par tous, donc copiable. À décider en Phase 2 : dépôt privé dédié au jeu, ou passage du dépôt en privé.
 - **Images et IA** : certaines licences interdisent de donner leurs fichiers à une IA (EULA Unity Asset Store du 04/12/2024 ; clause 3.1 de CraftPix signalée, à lire). Règle du projet : l'assistant ne lit jamais les images payantes, le code les référence seulement par leur nom de fichier.
 - **Héros** : aucune source vérifiée ne fournit un héros qui colle parfaitement (épée, arme changeable, animations complètes). C'est le premier poste où un petit budget serait utile.
@@ -212,3 +228,5 @@ Checklist à remplir au moment de la soumission.
 - Groupe 8 envoyé : rendu des personnages, éléments féodaux, approche pour le héros
 - Réponses groupe 8 : chibi vectoriel, Japon féodal accepté (héros compris), héros provisoire puis choix final avant la sortie
 - Groupe 9 envoyé : budget, modèle économique, boutique (prix direct ou monnaie premium)
+- Réponses groupe 9 : 100-300 €, cosmétiques + pubs récompensées, prix direct. Règles des pubs posées, pubs après le MVP
+- **Phase 1 terminée.** Début de la Phase 2 : question sur les langages connus, puis comparatif vérifié des technologies
