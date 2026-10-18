@@ -12,7 +12,7 @@
 
 | Phase | Statut | Détails |
 |-------|--------|---------|
-| 1. Découverte (concept) | 🟡 En cours | Groupes 1-5 bis répondus · recherche d'images (magie sans médiéval) et de règles de monétisation en cours · groupe 6 en cours (temps, ambition, contraintes) |
+| 1. Découverte (concept) | 🟡 En cours | Groupes 1-6 répondus · recherche d'images (magie sans médiéval) et de règles de monétisation en cours · groupe 7 en cours (fonctionnalités) |
 | 2. Choix technique | ⚪ À faire | — |
 | 3. Plan de projet (GDD + archi + roadmap) | ⚪ À faire | — |
 | 4. Développement | ⚪ À faire | — |
@@ -33,8 +33,8 @@ Objectif : construire le concept avant d'écrire une ligne de code.
 - [ ] Style visuel et sonore (contrainte : pas de graphiste) _(son choisi, style choisi ; sources d'images en recherche)_
 - [ ] Monétisation (impact validation Apple)
 - [ ] Fonctionnalités (iCloud, Game Center, notifications, langues)
-- [ ] Temps disponible / niveau d'ambition
-- [ ] Contraintes (budget, matériel, iPhone de test)
+- [x] Temps disponible / niveau d'ambition
+- [ ] Contraintes (budget, matériel, iPhone de test) _(matériel OK ; budget demandé avec la monétisation)_
 
 ### Décisions prises
 | Sujet | Choix | Date |
@@ -56,6 +56,10 @@ Objectif : construire le concept avant d'écrire une ligne de code.
 | Jeu de référence | **Sword x Staff**. Ce que Benji aime : le combat piloté par le build, le style graphique, la progression et l'équipement. Analyse complète : [`docs/reference-sword-x-staff.md`](docs/reference-sword-x-staff.md) | 2026-10-18 |
 | Univers | **Magie sans médiéval** : magie, esprits, brume, inspiration orientale. Pas de chevaliers, châteaux, royaumes ni dragons | 2026-10-18 |
 | Style graphique | 2D cartoon soigné, dans l'esprit de Sword x Staff (sans copier ses visuels). Sources d'images à choisir | 2026-10-18 |
+| Temps disponible | 5 à 10 h par semaine | 2026-10-18 |
+| Ambition | **Jeu complet, sans se précipiter.** Objectif : apprendre à publier sur iOS | 2026-10-18 |
+| Chemin de publication (proposé) | Sortie publique = jeu complet. Mais le MVP passe par **TestFlight** dès qu'il tourne, pour apprendre toute la chaîne (signature, archive, envoi, review) bien avant la vraie sortie | 2026-10-18 |
+| Matériel | MacBook Air M4 (16 Go) + **iPhone 17 Pro** + simulateur Xcode | 2026-10-18 |
 | Équipement visible | Par palier : l'arme change à l'écran, l'armure change de couleur ou brille selon la rareté. Le détail passe par les icônes | 2026-10-18 |
 | Audio (MVP) | Bruitages Kenney (CC0, sans crédit) + musique Kevin MacLeod (CC BY 4.0, crédit obligatoire). Licences à revérifier au téléchargement | 2026-10-18 |
 
@@ -81,6 +85,7 @@ Objectif : construire le concept avant d'écrire une ligne de code.
 - **Registre des assets** : tenir un tableau source / licence / date / reçu, et sauvegarder chaque page de licence (PDF ou capture) le jour du téléchargement. Apple peut demander une preuve de droits (règle 5.2.1).
 - **Ne pas copier Sword x Staff** : règles Apple 4.1 (copies), 4.3(b), 5.2.1 (propriété intellectuelle) et 2.3.7 (métadonnées), version du 16/10/2026 lue sur developer.apple.com. On reprend des mécaniques, jamais ses noms, visuels, interface ou chiffres exacts, ni le nom « Sword x Staff » dans la fiche App Store (même « comme Sword x Staff »).
 - **Conflits avec Sword x Staff (résolus)** : univers → « magie sans médiéval » ; style → mignon accepté, comique refusé.
+- **Jeu complet à 5-10 h/semaine = projet long** : probablement un an ou plus (à chiffrer en Phase 3). Risque principal en solo : la perte de motivation. Parades : jalons jouables réguliers, TestFlight dès le MVP, périmètre « complet » défini noir sur blanc en Phase 3.
 - **Combat tout auto = plus proche de Sword x Staff** : on se distingue par l'Ascension, la forge, l'empire, des compétences jamais vendues au hasard et une monétisation cosmétique. Avantage : bien plus simple à coder pour le MVP.
 - **Monétisation** : Sword x Staff vend surtout de la puissance (tirages, carte mensuelle, passes). Notre modèle cosmétique est plus sain pour un public expert, mais rapporte souvent moins. À trancher au groupe monétisation.
 
@@ -189,3 +194,5 @@ Checklist à remplir au moment de la soumission.
 - Réponses groupe 5 bis : Benji aime le combat piloté par le build, le style et la progression. Univers « magie sans médiéval ». Combat 100 % auto
 - Recherche lancée : images 2D cartoon pour l'univers magique non médiéval + règles Apple de monétisation (vérifiées en ligne)
 - Groupe 6 envoyé : temps disponible, ambition, contraintes (budget, iPhone de test)
+- Réponses groupe 6 : 5-10 h/semaine, jeu complet sans se précipiter avec l'objectif d'apprendre à publier, iPhone 17 Pro + simulateur. Proposition : TestFlight dès le MVP
+- Groupe 7 envoyé : fonctionnalités Apple (iCloud, Game Center, notifications, iPad), langues, hors ligne ou serveur
