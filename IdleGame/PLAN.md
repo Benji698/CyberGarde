@@ -12,7 +12,7 @@
 
 | Phase | Statut | Détails |
 |-------|--------|---------|
-| 1. Découverte (concept) | 🟡 En cours | Groupes 1-7 répondus · reste : sources d'images + monétisation + budget (recherche en cours) |
+| 1. Découverte (concept) | 🟡 En cours | Groupes 1-7 répondus · recherches images et monétisation faites · groupe 8 (images) puis groupe 9 (argent) en cours |
 | 2. Choix technique | ⚪ À faire | — |
 | 3. Plan de projet (GDD + archi + roadmap) | ⚪ À faire | — |
 | 4. Développement | ⚪ À faire | — |
@@ -90,13 +90,18 @@ Objectif : construire le concept avant d'écrire une ligne de code.
 - **Ne pas copier Sword x Staff** : règles Apple 4.1 (copies), 4.3(b), 5.2.1 (propriété intellectuelle) et 2.3.7 (métadonnées), version du 16/10/2026 lue sur developer.apple.com. On reprend des mécaniques, jamais ses noms, visuels, interface ou chiffres exacts, ni le nom « Sword x Staff » dans la fiche App Store (même « comme Sword x Staff »).
 - **Conflits avec Sword x Staff (résolus)** : univers → « magie sans médiéval » ; style → mignon accepté, comique refusé.
 - **Jeu complet à 5-10 h/semaine = projet long** : probablement un an ou plus (à chiffrer en Phase 3). Risque principal en solo : la perte de motivation. Parades : jalons jouables réguliers, TestFlight dès le MVP, périmètre « complet » défini noir sur blanc en Phase 3.
+- **Dépôt GitHub public** : `Benji698/cybertruck` est public. Ne jamais y pousser d'images payantes (redistribution interdite par leurs licences). Le code du jeu y serait visible par tous, donc copiable. À décider en Phase 2 : dépôt privé dédié au jeu, ou passage du dépôt en privé.
+- **Images et IA** : certaines licences interdisent de donner leurs fichiers à une IA (EULA Unity Asset Store du 04/12/2024 ; clause 3.1 de CraftPix signalée, à lire). Règle du projet : l'assistant ne lit jamais les images payantes, le code les référence seulement par leur nom de fichier.
+- **Héros** : aucune source vérifiée ne fournit un héros qui colle parfaitement (épée, arme changeable, animations complètes). C'est le premier poste où un petit budget serait utile.
+- **Classification d'âge** : combat permanent + épées → 13+ probable (descripteurs Apple « violence cartoon fréquente » et « armes », qui inclut les épées). Les classements Game Center peuvent ajouter le descripteur « compétitions ».
+- **Versions exigées par Apple** (developer.apple.com, consulté le 2026-10-18) : depuis le 28/04/2026, envoi avec Xcode 26+ et le SDK iOS 26. **À partir d'avril 2027** : SDK iOS 27 et cible iOS 15 minimum. Notre sortie publique sera sans doute après : on vise directement ces exigences.
 - **Triche à l'horloge** : sans serveur, avancer l'heure de l'iPhone gonfle les gains hors ligne. Sans gravité en solo, mais gênant avec des classements Game Center. Parades : détecter un retour en arrière de l'horloge, plafonner les gains hors ligne, choisir des classements difficiles à truquer.
 - **Combat tout auto = plus proche de Sword x Staff** : on se distingue par l'Ascension, la forge, l'empire, des compétences jamais vendues au hasard et une monétisation cosmétique. Avantage : bien plus simple à coder pour le MVP.
 - **Monétisation** : Sword x Staff vend surtout de la puissance (tirages, carte mensuelle, passes). Notre modèle cosmétique est plus sain pour un public expert, mais rapporte souvent moins. À trancher au groupe monétisation.
 
 ### Pistes d'assets (recherche du 2026-10-18, vérification partielle)
 
-> 🔎 **Recherche en cours** pour la direction retenue (2D cartoon, magie sans médiéval).
+> 🔎 **Nouvelle recherche faite** pour la direction retenue (2D cartoon, magie sans médiéval) : [`docs/images-magie-sans-medieval.md`](docs/images-magie-sans-medieval.md). Monétisation et règles Apple : [`docs/monetisation-regles-apple.md`](docs/monetisation-regles-apple.md).
 >
 > ⚠️ **À réévaluer** : Benji ne veut pas d'univers médiéval. Les sources visuelles fantasy médiévales ci-dessous (CraftPix Knight/Orcs/Trolls, LPC) ne conviennent sans doute plus. Les sources neutres (icônes, interface, audio) restent valables.
 
@@ -202,3 +207,5 @@ Checklist à remplir au moment de la soumission.
 - Réponses groupe 6 : 5-10 h/semaine, jeu complet sans se précipiter avec l'objectif d'apprendre à publier, iPhone 17 Pro + simulateur. Proposition : TestFlight dès le MVP
 - Groupe 7 envoyé : fonctionnalités Apple (iCloud, Game Center, notifications, iPad), langues, hors ligne ou serveur
 - Réponses groupe 7 : les 4 fonctionnalités, FR + EN, hors ligne au départ (en ligne peut-être plus tard). Étalement proposé (MVP sans compte payant), alerte sur la triche à l'horloge
+- Recherche images + monétisation terminée (après une relance : limite de session atteinte au 1er essai). Règles Apple vérifiées sur developer.apple.com. Aucun héros idéal trouvé. Dépôt GitHub public signalé
+- Groupe 8 envoyé : rendu des personnages, éléments féodaux, approche pour le héros
