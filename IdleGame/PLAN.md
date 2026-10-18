@@ -12,7 +12,7 @@
 
 | Phase | Statut | Détails |
 |-------|--------|---------|
-| 1. Découverte (concept) | 🟡 En cours | Groupe 1 répondu · groupe 2 en cours (sessions, rôle du joueur, public) |
+| 1. Découverte (concept) | 🟡 En cours | Groupes 1-2 répondus · groupe 3 en cours (boucle de jeu, équipement, prestige) |
 | 2. Choix technique | ⚪ À faire | — |
 | 3. Plan de projet (GDD + archi + roadmap) | ⚪ À faire | — |
 | 4. Développement | ⚪ À faire | — |
@@ -28,7 +28,7 @@ Objectif : construire le concept avant d'écrire une ligne de code.
 
 ### Thèmes à couvrir
 - [x] Thème / univers / ambiance
-- [ ] Durée des sessions et public cible _(sessions : à confirmer, voir point de vigilance)_
+- [x] Durée des sessions et public cible
 - [ ] Boucle de jeu principale (ressources, upgrades, prestige)
 - [ ] Style visuel et sonore (contrainte : pas de graphiste)
 - [ ] Monétisation (impact validation Apple)
@@ -40,13 +40,17 @@ Objectif : construire le concept avant d'écrire une ligne de code.
 | Sujet | Choix | Date |
 |-------|-------|------|
 | Thème | Fantasy / RPG | 2026-10-18 |
-| Ambiance | Fun / cartoon / humoristique | 2026-10-18 |
-| Sessions | Souhait initial : longues (20 min+) — **à confirmer** | 2026-10-18 |
+| Ambiance | Épique, **pas trop humoristique** (révisé, remplace "fun/humoristique") | 2026-10-18 |
+| Sessions | Hybride : cœur idle en 2 min + couche active optionnelle (20 min+ possible) | 2026-10-18 |
+| Rôle du joueur | Un guerrier qui bâtit son empire et devient plus fort grâce à de nouvelles armures | 2026-10-18 |
+| Pilier émotionnel | Attachement au personnage : cosmétiques + équipement toujours plus puissant | 2026-10-18 |
+| Public cible | Joueurs d'idle expérimentés (profondeur, optimisation, prestige) | 2026-10-18 |
 
 ### Points de vigilance
-- **Sessions longues vs idle** : un idle game avance sans le joueur, donc tenir 20 min+ demande beaucoup de contenu actif, ce qui est lourd pour un dev solo.
-  Proposition : modèle hybride (cœur idle jouable en 2 min + couche active optionnelle : boss, donjons, quêtes).
-- **Fantasy cartoon = assets** : beaucoup de personnages et monstres à illustrer. Il faudra une solution réaliste sans graphiste (packs libres, style simple, assets réutilisables). On en parle dans le groupe "style visuel".
+- **Équipement visible sur le personnage (paperdoll)** : sprites en couches superposées (corps, casque, plastron, arme…). Poste d'assets le plus lourd du projet. Pistes : packs modulaires libres, variantes de couleur/effets par palier. À trancher au groupe "style visuel".
+- **Public expert = rejet du pay-to-win** : monétiser par les cosmétiques plutôt que par la puissance. À trancher au groupe "monétisation".
+- **Grands nombres** : les joueurs experts dépassent vite les milliards. Prévoir l'affichage (K, M, B… ou notation scientifique) et, à terme, un type numérique au-delà de la limite de `Double` (~1,8e308). Pour le MVP, un seul niveau de prestige.
+- **Butin aléatoire + achats** : si l'équipement aléatoire peut s'obtenir contre de l'argent réel, Apple impose d'afficher les probabilités (règles "loot boxes"). À garder en tête.
 
 ---
 
@@ -91,3 +95,5 @@ Checklist à remplir au moment de la soumission.
 - Démarrage Phase 1 : premières questions envoyées (thème, ambiance, longueur des sessions)
 - Réponses groupe 1 : Fantasy/RPG, fun/cartoon, sessions longues. Alerte sur le risque des sessions longues, proposition d'un modèle hybride
 - Groupe 2 envoyé : confirmation du format de session, rôle du joueur, public cible
+- Réponses groupe 2 : hybride, guerrier bâtisseur d'empire centré sur l'équipement et les cosmétiques, ton moins comique, public expert
+- Groupe 3 envoyé : boucle de jeu, source de l'équipement, thème du prestige
