@@ -12,7 +12,7 @@
 
 | Phase | Statut | Détails |
 |-------|--------|---------|
-| 1. Découverte (concept) | 🟡 En cours | Questions en cours — thème/ambiance/sessions |
+| 1. Découverte (concept) | 🟡 En cours | Groupe 1 répondu · groupe 2 en cours (sessions, rôle du joueur, public) |
 | 2. Choix technique | ⚪ À faire | — |
 | 3. Plan de projet (GDD + archi + roadmap) | ⚪ À faire | — |
 | 4. Développement | ⚪ À faire | — |
@@ -27,8 +27,8 @@ Légende : ⚪ à faire · 🟡 en cours · 🟢 fait · 🔴 bloqué
 Objectif : construire le concept avant d'écrire une ligne de code.
 
 ### Thèmes à couvrir
-- [ ] Thème / univers / ambiance
-- [ ] Durée des sessions et public cible
+- [x] Thème / univers / ambiance
+- [ ] Durée des sessions et public cible _(sessions : à confirmer, voir point de vigilance)_
 - [ ] Boucle de jeu principale (ressources, upgrades, prestige)
 - [ ] Style visuel et sonore (contrainte : pas de graphiste)
 - [ ] Monétisation (impact validation Apple)
@@ -37,7 +37,16 @@ Objectif : construire le concept avant d'écrire une ligne de code.
 - [ ] Contraintes (budget, matériel, iPhone de test)
 
 ### Décisions prises
-_(vide pour l'instant — se remplit au fil des réponses de Benji)_
+| Sujet | Choix | Date |
+|-------|-------|------|
+| Thème | Fantasy / RPG | 2026-10-18 |
+| Ambiance | Fun / cartoon / humoristique | 2026-10-18 |
+| Sessions | Souhait initial : longues (20 min+) — **à confirmer** | 2026-10-18 |
+
+### Points de vigilance
+- **Sessions longues vs idle** : un idle game avance sans le joueur, donc tenir 20 min+ demande beaucoup de contenu actif, ce qui est lourd pour un dev solo.
+  Proposition : modèle hybride (cœur idle jouable en 2 min + couche active optionnelle : boss, donjons, quêtes).
+- **Fantasy cartoon = assets** : beaucoup de personnages et monstres à illustrer. Il faudra une solution réaliste sans graphiste (packs libres, style simple, assets réutilisables). On en parle dans le groupe "style visuel".
 
 ---
 
@@ -80,3 +89,5 @@ Checklist à remplir au moment de la soumission.
 - Création du dépôt et de la branche `claude/idle-game-app-store-arlsfw`
 - Création du dossier `IdleGame/` et du présent `PLAN.md`
 - Démarrage Phase 1 : premières questions envoyées (thème, ambiance, longueur des sessions)
+- Réponses groupe 1 : Fantasy/RPG, fun/cartoon, sessions longues. Alerte sur le risque des sessions longues, proposition d'un modèle hybride
+- Groupe 2 envoyé : confirmation du format de session, rôle du joueur, public cible
