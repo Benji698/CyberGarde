@@ -12,7 +12,7 @@
 
 | Phase | Statut | Détails |
 |-------|--------|---------|
-| 1. Découverte (concept) | 🟡 En cours | Groupes 1-4 répondus (gameplay bouclé) · recherche d'assets en cours avant le groupe 5 (style visuel et sonore) |
+| 1. Découverte (concept) | 🟡 En cours | Groupes 1-4 répondus (gameplay bouclé) · recherche d'assets faite (vérif partielle) · groupe 5 en cours (style, équipement visible, audio) |
 | 2. Choix technique | ⚪ À faire | — |
 | 3. Plan de projet (GDD + archi + roadmap) | ⚪ À faire | — |
 | 4. Développement | ⚪ À faire | — |
@@ -71,6 +71,51 @@ Objectif : construire le concept avant d'écrire une ligne de code.
 - **Grands nombres** : les joueurs experts dépassent vite les milliards. Prévoir l'affichage (K, M, B… ou notation scientifique) et, à terme, un type numérique au-delà de la limite de `Double` (~1,8e308). Pour le MVP, un seul niveau de prestige.
 - **Butin aléatoire + achats** : si l'équipement aléatoire peut s'obtenir contre de l'argent réel, Apple impose d'afficher les probabilités (règles "loot boxes"). À garder en tête.
 - **Ascension légère** : comme le guerrier garde son équipement, le reset coûte peu. C'est plutôt un changement de chapitre. À calibrer en Phase 3 : le début du monde suivant doit défiler vite avec l'équipement actuel, puis ralentir pour pousser à forger et à farmer du butin.
+- **Licences anti-IA** : le code du jeu est écrit avec l'aide d'une IA. Certains artistes interdisent leurs assets dans tout jeu qui utilise de l'IA, code compris (ex. Mana Seed : clause confirmée par le fichier « NO AI, NO EXCEPTIONS.txt » du pack). Ces licences sont exclues d'office.
+- **Registre des assets** : tenir un tableau source / licence / date / reçu, et sauvegarder chaque page de licence (PDF ou capture) le jour du téléchargement. Apple peut demander une preuve de droits (règle 5.2.1).
+
+### Pistes d'assets (recherche du 2026-10-18, vérification partielle)
+
+**Limites de la vérification** : l'environnement cloud n'a pas pu ouvrir beaucoup de sites (itch.io, opengameart.org, kenney.nl, craftpix.net, incompetech.com, creativecommons.org…), et le quota de recherches a été épuisé en cours de route. Vérifié sur source primaire : règles Apple (version du 16/10/2026), licences LPC (dépôt GitHub), clause anti-IA de Mana Seed. Le reste repose sur des extraits de recherche ou n'a pas été revérifié (audio en particulier). À revérifier au moment du téléchargement.
+
+Mots utiles :
+- **CC0** : domaine public. Tu fais ce que tu veux, sans crédit.
+- **Attribution (crédit)** : citer l'auteur et la licence dans un écran Crédits du jeu.
+- **OGA-BY** : crédit obligatoire, mais autorisé sur l'App Store (pas de clause anti-DRM).
+- **CC BY** : crédit obligatoire. Petite zone grise avec le DRM de l'App Store (risque faible : FairPlay ne chiffre que l'exécutable, pas les images ni les sons).
+- **Paperdoll** : perso en couches superposées (corps + casque + torse + jambes + arme + bouclier).
+
+| Source | Type | Licence | Usage commercial / App Store | Attribution | Coût | Vérifié le |
+|---|---|---|---|---|---|---|
+| Universal LPC Spritesheet Generator (couches OGA-BY/CC0 seulement) | Perso pixel en couches + ennemis humanoïdes (orc, gobelin, lézard, squelette, vampire...) | CC0 ou OGA-BY 3.0/4.0, choisie par fichier | Oui / faible (le README conseille CC0/OGA-BY pour l'App Store) | Oui sauf CC0 : chaque auteur + lien de licence | Gratuit | 2026-10-18 |
+| CraftPix « 2D Fantasy » (Knight, Orcs, Trolls, fonds de combat, Fantasy RPG GUI) | Perso vectoriel en pièces, vue de côté + ennemis, fonds, interface | Licence CraftPix (maison) | Oui / faible. Pas de revente, pas de fichiers extractibles | « Facultatif » non confirmé : mettre « Art : CraftPix.net » | 0 à ~25 USD | 2026-10-18 (page licence non lue) |
+| CraftPix « Game Icons of Fantasy » (armures 512 px) | Icônes d'équipement peintes, version de base + améliorée | Licence CraftPix | Oui / faible | Par prudence : « CraftPix.net » | Pack Knight gratuit, autres ~4,50 USD (non vérifié) | 2026-10-18 (page licence non lue) |
+| game-icons.net | Icônes plates SVG (armes, bâtiments, compétences, monnaies) | CC BY 3.0 (vérifier le pied de page) | Oui / faible | Oui : chaque auteur + lien, accessible depuis un menu | Gratuit | 2026-10-18 |
+| Painterly Spell Icons 1-2 (J. W. Bjerk) | Icônes de sorts peintes | Choisir CC BY 3.0 | Oui / faible | Oui : « J. W. Bjerk (eleazzaar) -- www.jwbjerk.com/art » + licence | Gratuit | 2026-10-18 |
+| Kenney Fantasy UI Borders | Cadres et panneaux d'interface étirables | CC0 | Oui / aucun | Non | Gratuit | 2026-10-18 |
+| Kenney Roguelike Characters | Perso pixel 16x16 en pièces, sans animation, ton peu épique | CC0 | Oui / aucun | Non | Gratuit | 2026-10-18 (licence lue via une copie tierce) |
+| Kenney audio (UI Audio, Interface Sounds, Impact Sounds, RPG Audio, Casino Audio) | Bruitages UI, coups, pièces (OGG) | CC0 | Oui / aucun | Non | Gratuit | 2026-10-18 (non vérifié en ligne) |
+| Kevin MacLeod (incompetech.com) | Musique | CC BY 4.0, ou licence Standard payante | Oui / faible | Oui en CC BY : titre, auteur, licence, écran Crédits | Gratuit, ou 30 USD le morceau (20 USD chacun dès 3) | 2026-10-18 (non vérifié en ligne) |
+
+**Écartées ou à éviter**
+- **LPC, pièces hors OGA-BY/CC0** (minotaure, loup, homme-sanglier, troll, tête de zombie, corps « muscular », armes d'hast, bouclier kite, fléau, hache de guerre, sabre) : CC-BY-SA/GPL, ou CC-BY seul. Partage à l'identique et clause anti-DRM.
+- **Hippo (Pixel Hero Maker, Character Editor)** : pensé pour Unity. Une vérification juge l'usage hors Unity à risque moyen. Vue de côté et prix non vérifiés. 25 à 55 EUR.
+- **LayerLab 2D Art Maker** : Unity et Spine obligatoires, ~159 USD au total.
+- **Mana Seed** : la licence interdit toute IA dans le jeu, même pour le code. Vue de dessus. Risque élevé.
+- **Iphigenia Pixels, edermunizz, stylerfunk, pzUH (itch.io)** : licences non lues (site inaccessible). Celle d'edermunizz se contredit.
+- **Outils IA (PixelLab, Scenario, Retro Diffusion, Firefly, Midjourney, Leonardo)** : conditions non vérifiées. Pas de couches alignées. Risque de ressemblance avec des œuvres connues. Images brutes sans doute non protégées.
+- **Sonniss GDC Bundle, Lufus, Pixabay** : licences non vérifiées (Sonniss v2.0 d'août 2026, texte Lufus non lu, licence maison Pixabay et pistes Content ID). À revérifier, Sonniss en priorité.
+- **Freesound, OpenGameArt (audio)** : risque moyen. Licences NC et partage à l'identique mélangées, provenance des envois incertaine.
+- **ChipTone / jfxr / Bfxr** : droits non revérifiés, et un son 8-bit qui jure avec le ton épique.
+- **Whisper Ltd « 4500 RPG Skill Icons »** : soupçon de copie d'icônes Dota 2 / WoW.
+
+**Notes techniques**
+- Les sons Kenney sont en OGG, un format que SpriteKit et SwiftUI ne lisent pas : conversion à prévoir (ffmpeg ou Audacity).
+- Ne pas chiffrer soi-même les fichiers d'assets (option de chiffrement Godot PCK ou Unity) quand ils sont sous CC BY.
+- Prix en USD hors TVA (environ 20 % de plus en France sur itch.io, non vérifié).
+- Règles Apple (version du 16/10/2026) : aucune obligation de signaler des images faites par IA. Les règles de propriété intellectuelle (5.2, 5.2.1) s'appliquent.
+
+*Ceci n'est pas un avis juridique. Relis et sauvegarde (PDF ou capture) chaque licence le jour du téléchargement, avec ton reçu.*
 
 ---
 
@@ -121,3 +166,5 @@ Checklist à remplir au moment de la soumission.
 - Groupe 4 envoyé : ce que l'Ascension réinitialise, style de combat, forme de l'empire
 - Réponses groupe 4 : l'équipement est conservé à l'Ascension, combat temps réel auto + compétences, empire en liste de bâtiments. Gameplay bouclé
 - Recherche web lancée sur les sources d'assets légales (visuels en couches, icônes, IA, audio) pour préparer le groupe 5
+- Recherche terminée : vérification partielle (beaucoup de sites inaccessibles depuis l'environnement cloud). Résultats dans « Pistes d'assets ». Licences anti-IA exclues d'office
+- Groupe 5 envoyé : style graphique, affichage de l'équipement sur le guerrier, audio
