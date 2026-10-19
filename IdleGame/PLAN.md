@@ -13,8 +13,8 @@
 | Phase | Statut | Détails |
 |-------|--------|---------|
 | 1. Découverte (concept) | 🟢 Fait | 9 groupes de questions répondus, concept validé (voir synthèse ci-dessous) |
-| 2. Choix technique | 🟡 En cours | Comparatif fait : Godot 4.7 recommandé, natif Apple en plan B · en attente de validation |
-| 3. Plan de projet (GDD + archi + roadmap) | ⚪ À faire | — |
+| 2. Choix technique | 🟢 Fait | **Godot 4.7 validé** (GDScript), natif Apple en plan B · nouveau dépôt privé dédié au jeu |
+| 3. Plan de projet (GDD + archi + roadmap) | 🟡 En cours | Création du dépôt privé, puis rédaction du plan |
 | 4. Développement | ⚪ À faire | — |
 | 5. Soumission App Store | ⚪ À faire | — |
 
@@ -194,7 +194,15 @@ Détail complet : [`docs/choix-technique.md`](docs/choix-technique.md).
 - **Deuxième choix / plan B : natif Apple** (SwiftUI + SpriteKit), si le jalon 0 échoue ou si Benji préfère zéro plugin tiers.
 - **Écartés** : Unity (éditeur inutilisable par l'assistant, fin de support de la 6.3 en décembre 2027), React Native (pas un moteur de jeu).
 
-**Statut : en attente de validation par Benji.**
+**Statut : validé par Benji le 2026-10-19.**
+
+### Décisions de la Phase 2
+| Sujet | Choix | Date |
+|-------|-------|------|
+| Technologie | **Godot 4.7.x** (stable 4.7.2), version « standard » (pas .NET), langage **GDScript** | 2026-10-19 |
+| Plan B | Natif Apple (SwiftUI + SpriteKit) si le jalon 0 (TestFlight avec Xcode 27) échoue sans solution | 2026-10-19 |
+| Dépôt du jeu | **Nouveau dépôt GitHub privé** dédié au jeu. Le dossier `IdleGame/` y sera déplacé ; le dépôt `cybertruck` (site de cours) reste public et intact | 2026-10-19 |
+| Règle réseau | Aucun contournement d'une restriction réseau sans accord explicite de Benji | 2026-10-19 |
 
 ---
 
@@ -258,3 +266,4 @@ Checklist à remplir au moment de la soumission.
 ### 2026-10-19
 - Comparatif repris après la limite de session, puis terminé. Recommandation : Godot 4.7, plan B natif Apple
 - Transparence : un agent de recherche avait récupéré la chaîne Swift via Docker Hub pour contourner le blocage de download.swift.org, sans accord de Benji. Fichiers (5,6 Go) supprimés du dossier temporaire ; rien n'avait été poussé dans le dépôt. Règle : aucun contournement réseau sans accord explicite
+- Benji valide Godot 4.7 et un nouveau dépôt privé. **Phase 2 terminée.** Prochaine étape : créer le dépôt privé, y déplacer le projet, puis rédiger la Phase 3
