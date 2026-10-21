@@ -32,7 +32,7 @@
     host.className = 'site-header';
     host.innerHTML =
       '<div class="container">' +
-        '<a class="brand" href="' + root + 'index.html">' + ICONS.shield + '<span>CyberTruck</span></a>' +
+        '<a class="brand" href="' + root + 'index.html">' + ICONS.shield + '<span>CyberGarde</span></a>' +
         '<button class="icon-btn menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu">' + ICONS.menu + '</button>' +
         '<nav class="nav" id="main-nav" aria-label="Navigation principale">' +
           navLink('index.html', 'Accueil', 'home') +
@@ -67,7 +67,7 @@
     host.className = 'site-footer';
     host.innerHTML =
       '<div class="container">' +
-        '<div><strong>CyberTruck</strong> — site de sensibilisation à la cybersécurité.<br>Projet réalisé dans le cadre d\'une alternance en administration système.</div>' +
+        '<div><strong>CyberGarde</strong> — site de sensibilisation à la cybersécurité.<br>Projet réalisé dans le cadre d\'une alternance en administration système.</div>' +
         '<div>Victime d\'une cyberattaque ? <a href="https://www.17cyber.gouv.fr" target="_blank" rel="noopener">17Cyber</a> · ' +
         '<a href="https://www.cybermalveillance.gouv.fr" target="_blank" rel="noopener">cybermalveillance.gouv.fr</a><br>' +
         '<a href="' + root + 'ressources.html">Ressources et numéros utiles</a></div>' +
