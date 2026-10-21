@@ -63,7 +63,7 @@ window.DATA_SALARIES_SIMS = {
       type: 'sms', expediteur: '+33 7 56 12 98 44',
       contenu: 'Votre colis n°FR8822 est en attente. Des frais de réexpédition de 1,99 € sont requis : https://colis-suivi-fr.info/paiement',
       piege: true,
-      explication: 'Le transporteur n\'écrit pas depuis un numéro de portable, et le lien ne mène pas vers son site officiel. Les frais minimes servent à voler votre carte bancaire.'
+      explication: 'Ce SMS vient d\'un numéro de portable ordinaire (+33 7…) : un vrai transporteur envoie ses SMS depuis un nom d\'expéditeur ou un numéro court, pas depuis le portable d\'un particulier. Et le lien ne mène pas vers son site officiel. Les frais minimes servent à voler votre carte bancaire.'
     },
     {
       type: 'url',
