@@ -1,103 +1,76 @@
-# Déploiement de CyberGarde avec connexion Microsoft obligatoire
+# Mise en ligne de CyberGarde
 
-Le site est publié sur **Azure Static Web Apps**. Il est accessible depuis Internet, mais **chaque visiteur doit se connecter avec son compte professionnel Microsoft** (Microsoft Entra ID, le même compte que pour Outlook ou Teams). Les comptes personnels (outlook.com, hotmail…) et les comptes des autres entreprises sont refusés.
+Le site est publié sur **Azure Static Web Apps** (Microsoft), en plan **gratuit** :
 
-```
-Visiteur ──► Azure Static Web Apps ──► pas connecté ? ──► page de connexion Microsoft de l'entreprise
-                     │                                            │
-                     └──────────── connecté avec un compte de l'entreprise ◄┘
-                                   → accès au site
-```
+- accessible à tous, en **HTTPS** avec un certificat géré et renouvelé automatiquement ;
+- **en-têtes de sécurité** stricts (voir plus bas) ;
+- aucun serveur à maintenir, aucune base de données, aucun compte : la progression de chaque visiteur reste dans son propre navigateur ;
+- **publication automatique** : à chaque mise à jour de la branche `main` sur GitHub, le site en ligne est mis à jour.
 
 Ce qui est déjà prêt dans le dépôt :
 
 | Fichier | Rôle |
 |---|---|
-| `staticwebapp.config.json` | Toutes les pages exigent une connexion ; connexion via le locataire Microsoft Entra de l'entreprise uniquement ; en-têtes de sécurité (CSP stricte, HSTS, anti-clickjacking…). |
-| `.github/workflows/deploy-azure.yml` | À chaque mise à jour de `main`, publie automatiquement le site (uniquement les fichiers du site : ni le README, ni `outils/`). |
-| `assets/js/ui.js` | Affiche le compte connecté et un lien « Se déconnecter » dans le pied de page. |
+| `staticwebapp.config.json` | En-têtes de sécurité et page d'erreur 404. |
+| `.github/workflows/deploy-azure.yml` | Publication automatique ; seuls les fichiers du site sont mis en ligne (ni le README, ni `outils/`). |
+| `mentions-legales.html` | Mentions légales et politique de confidentialité, **à compléter** (voir étape 4). |
+| `404.html` | Page affichée pour une adresse inexistante. |
 
-Il reste à créer les ressources côté Azure et Microsoft Entra, ce qui demande des droits d'administration : **à faire avec le service informatique**.
+## Étape 1 — Créer un compte Azure
 
-## Prérequis
+Si l'entreprise a déjà un abonnement Azure, demandez au service informatique le droit d'y créer une ressource. Sinon, créez un compte sur [azure.microsoft.com](https://azure.microsoft.com) : le plan gratuit de Static Web Apps ne coûte rien, mais Azure demande une carte bancaire à l'inscription pour vérifier l'identité.
 
-- Un abonnement **Azure** de l'entreprise, avec le droit de créer une ressource.
-- Le droit de créer une **inscription d'application** dans Microsoft Entra ID (rôle « Développeur d'applications » au minimum).
-- Être administrateur du dépôt GitHub (pour ajouter un secret et une variable).
-
-> **Coût** : la restriction aux seuls comptes de l'entreprise nécessite le plan **Standard** d'Azure Static Web Apps (environ 9 € par mois). Le plan gratuit accepte n'importe quel compte Microsoft, ce qui ne convient pas ici.
-
-## Étape 1 — Créer la Static Web App
+## Étape 2 — Créer la Static Web App
 
 1. Sur [portal.azure.com](https://portal.azure.com), cliquez sur **Créer une ressource** et recherchez **Static Web App**.
 2. Renseignez :
-   - **Groupe de ressources** : par exemple `rg-cybergarde` ;
+   - **Groupe de ressources** : créez-en un, par exemple `rg-cybergarde` ;
    - **Nom** : `cybergarde` ;
-   - **Type de plan** : **Standard** ;
-   - **Source de déploiement** : **Autre** (le workflow GitHub est déjà dans le dépôt ; choisir « GitHub » ici en créerait un second).
+   - **Type de plan** : **Gratuit** ;
+   - **Région** : Europe de l'Ouest (West Europe) ;
+   - **Source de déploiement** : **Autre**. Le workflow GitHub est déjà dans le dépôt ; choisir « GitHub » ici en créerait un second.
 3. Cliquez sur **Vérifier + créer**, puis **Créer**.
 4. Ouvrez la ressource et notez son **URL** (du type `https://nom-aleatoire.azurestaticapps.net`).
 
-## Étape 2 — Relier GitHub à Azure
+## Étape 3 — Relier GitHub à Azure
 
 1. Dans la Static Web App, cliquez sur **Gérer le jeton de déploiement** et copiez le jeton.
-2. Dans le dépôt GitHub : **Settings → Secrets and variables → Actions**.
-3. Onglet **Secrets** → **New repository secret** :
+2. Dans le dépôt GitHub : **Settings → Secrets and variables → Actions → New repository secret** :
    - Nom : `AZURE_STATIC_WEB_APPS_API_TOKEN`
    - Valeur : le jeton copié.
 
-## Étape 3 — Inscrire l'application dans Microsoft Entra ID
+Ce jeton permet de publier sur le site : ne le partagez pas. En cas de fuite, régénérez-le depuis le même menu d'Azure, puis remplacez le secret dans GitHub.
 
-1. Sur le portail, ouvrez **Microsoft Entra ID → Inscriptions d'applications → Nouvelle inscription**.
-2. Renseignez :
-   - **Nom** : `CyberGarde` ;
-   - **Types de comptes pris en charge** : **Comptes dans cet annuaire d'organisation uniquement (locataire unique)**. C'est ce réglage qui limite l'accès aux salariés de l'entreprise.
-   - **URI de redirection** : plateforme **Web**, adresse `https://VOTRE-URL/.auth/login/aad/callback` (avec l'URL notée à l'étape 1).
-3. Cliquez sur **S'inscrire**, puis notez sur la page **Vue d'ensemble** :
-   - l'**ID d'application (client)** ;
-   - l'**ID de l'annuaire (locataire)**.
-4. Menu **Authentification** : cochez **Jetons d'ID** (section « Octroi implicite et flux hybrides »), puis **Enregistrer**.
-5. Menu **Certificats et secrets → Nouveau secret client** : donnez une description et une durée (24 mois maximum), puis **copiez immédiatement la valeur** (elle ne sera plus affichée).
+## Étape 4 — Compléter les mentions légales
 
-> ⚠ Notez dans votre agenda la date d'expiration du secret : une fois expiré, plus personne ne pourra se connecter. Il faudra alors en créer un nouveau et mettre à jour `AZURE_CLIENT_SECRET` (étape 4).
+La loi (LCEN) impose d'indiquer qui édite le site. Dans `mentions-legales.html`, remplacez chaque champ surligné **[À compléter : …]** : nom et forme juridique de l'entreprise, adresse, SIREN, contact, directeur ou directrice de la publication. Faites valider le texte par votre responsable. Tant qu'un champ reste à compléter, la publication affiche un avertissement dans GitHub Actions.
 
-## Étape 4 — Donner les identifiants à la Static Web App
+## Étape 5 — Publier
 
-Dans la Static Web App : **Paramètres → Variables d'environnement**, ajoutez :
+Dans le dépôt GitHub : **Actions → Déploiement Azure → Run workflow**. Ensuite, chaque fusion sur `main` republie automatiquement le site.
 
-| Nom | Valeur |
+## Étape 6 — Vérifier
+
+1. Ouvrez l'URL du site : le cadenas HTTPS doit s'afficher.
+2. Essayez une adresse inexistante (`/test`) : la page « Page introuvable » doit s'afficher.
+3. Contrôlez les en-têtes de sécurité, par exemple sur [securityheaders.com](https://securityheaders.com), ou dans les outils de développement du navigateur (onglet Réseau → en-têtes de la réponse).
+4. Faites un tour de toutes les pages, de préférence aussi sur téléphone.
+
+## Option — Une adresse au nom de l'entreprise
+
+Pour utiliser par exemple `cyber.monentreprise.fr` : dans la Static Web App, ouvrez **Domaines personnalisés → Ajouter**, puis créez chez le gestionnaire DNS de l'entreprise l'enregistrement **CNAME** indiqué par Azure. Le certificat HTTPS de ce domaine est créé et renouvelé automatiquement, gratuitement.
+
+## Les protections en place
+
+| En-tête | Protection |
 |---|---|
-| `AZURE_CLIENT_ID` | l'ID d'application (client) |
-| `AZURE_CLIENT_SECRET` | la valeur du secret client |
-
-Cliquez sur **Appliquer**.
-
-## Étape 5 — Indiquer le locataire à GitHub
-
-Dans le dépôt GitHub : **Settings → Secrets and variables → Actions**, onglet **Variables** → **New repository variable** :
-
-- Nom : `AZURE_TENANT_ID`
-- Valeur : l'ID de l'annuaire (locataire) noté à l'étape 3.
-
-Ce n'est pas un secret (l'ID de locataire n'est pas confidentiel), mais il est propre à l'entreprise : c'est pourquoi il n'est pas écrit en dur dans le dépôt.
-
-## Étape 6 — Publier
-
-Dans le dépôt GitHub : **Actions → Déploiement Azure → Run workflow**. Ensuite, chaque fusion sur `main` republiera automatiquement le site.
-
-## Étape 7 — Vérifier
-
-1. Ouvrez l'URL du site dans une **fenêtre de navigation privée** : vous devez être redirigé vers la page de connexion Microsoft.
-2. Connectez-vous avec votre compte professionnel : le site s'affiche, et votre adresse apparaît en bas de page avec le lien « Se déconnecter ».
-3. Essayez avec un compte personnel (outlook.com, hotmail…) : la connexion doit être refusée.
-4. Contrôlez les en-têtes de sécurité, par exemple avec les outils de développement du navigateur (onglet Réseau → en-têtes de la réponse).
-
-## Options
-
-**Réserver le site à certains salariés.** Dans **Microsoft Entra ID → Applications d'entreprise → CyberGarde → Propriétés**, passez **Affectation requise ?** à **Oui**, puis ajoutez les utilisateurs ou groupes autorisés dans **Utilisateurs et groupes**. Par défaut, tous les comptes de l'entreprise ont accès.
-
-**Utiliser une adresse de l'entreprise** (par exemple `cyber.monentreprise.fr`). Dans la Static Web App : **Domaines personnalisés → Ajouter**, puis créez l'enregistrement DNS (CNAME) indiqué. Ajoutez ensuite `https://cyber.monentreprise.fr/.auth/login/aad/callback` dans les URI de redirection de l'inscription d'application (étape 3).
+| `Content-Security-Policy` | Le navigateur n'exécute que les scripts venant du site lui-même : une injection de code est bloquée. Aucun JavaScript n'est écrit dans les pages HTML (tout est dans `assets/js/`), ce qui permet cette règle stricte. |
+| `Strict-Transport-Security` | Le navigateur n'utilise plus jamais HTTP pour ce site, même si l'on tape l'adresse sans « https ». |
+| `X-Frame-Options` et `frame-ancestors 'none'` | Le site ne peut pas être affiché dans une page piégée (clickjacking). |
+| `X-Content-Type-Options` | Empêche le navigateur de « deviner » le type d'un fichier. |
+| `Referrer-Policy` | Limite les informations transmises aux sites externes quand on clique sur un lien. |
+| `Permissions-Policy` | Coupe l'accès à la caméra, au micro, à la position, etc., dont le site n'a pas besoin. |
 
 ## Ce que le site collecte
 
-Rien. Il n'y a ni base de données ni suivi : la connexion sert uniquement à contrôler l'accès, et la progression de chaque salarié reste enregistrée dans son propre navigateur. L'entreprise ne peut donc pas savoir qui a suivi le parcours ; pour cela, il faudrait ajouter une partie serveur ou passer par la plateforme de formation (LMS) de l'entreprise.
+Rien. Il n'y a ni compte, ni formulaire, ni base de données, ni mesure d'audience. La progression et le thème sont enregistrés dans le stockage local du navigateur de chaque visiteur et ne sont jamais transmis. Seul l'hébergeur peut conserver des journaux techniques de connexion (adresse IP, date), comme tout serveur web.

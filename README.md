@@ -26,7 +26,7 @@ puis ouvrir <http://localhost:8000>. Alternative si Python est utilisable : `pyt
 
 ## Mise en ligne
 
-Le site est prévu pour Azure Static Web Apps, avec une connexion obligatoire par compte professionnel Microsoft (Entra ID) et des en-têtes de sécurité stricts. Voir [DEPLOIEMENT.md](DEPLOIEMENT.md).
+Le site est prévu pour Azure Static Web Apps (plan gratuit) : HTTPS, en-têtes de sécurité stricts, publication automatique depuis `main`. Voir [DEPLOIEMENT.md](DEPLOIEMENT.md).
 
 ## Structure
 
@@ -41,7 +41,7 @@ assets/js/scenario-engine.js  Moteur de scénario du parcours IT (XP, menace, ch
 assets/js/pages/              Script propre à chaque page (aucun JavaScript dans le HTML, pour la CSP)
 data/                         Tout le contenu pédagogique
 outils/serveur.pl             Mini serveur web de développement
-staticwebapp.config.json      Configuration Azure : connexion Microsoft obligatoire, en-têtes de sécurité
+staticwebapp.config.json      Configuration Azure : en-têtes de sécurité, page 404
 .github/workflows/            Déploiement automatique sur Azure à chaque mise à jour de main
 ```
 

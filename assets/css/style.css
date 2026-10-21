@@ -163,8 +163,6 @@ kbd {
 }
 .site-footer .container { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: space-between; }
 .site-footer a { color: var(--text-muted); }
-.site-footer .account { flex-basis: 100%; padding-top: 12px; border-top: 1px solid var(--border); }
-
 /* ---------- Boutons ---------- */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -271,6 +269,7 @@ kbd {
   flex: none; width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center;
   background: var(--primary-soft); color: var(--primary); font-size: 1rem; font-weight: 800;
 }
+mark.todo { background: var(--warning-soft); color: var(--warning); font-weight: 700; padding: 0 4px; border-radius: 4px; }
 .url-anatomy {
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
   padding: 12px 14px; margin: 12px 0 0;
