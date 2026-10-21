@@ -1,4 +1,4 @@
-# CyberTruck — site de sensibilisation à la cybersécurité
+# CyberGarde — site de sensibilisation à la cybersécurité
 
 Site statique (HTML/CSS/JavaScript, sans dépendance ni compilation) réalisé dans le cadre d'une alternance en administration système.
 
