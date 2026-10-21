@@ -72,6 +72,23 @@
         '<a href="https://www.cybermalveillance.gouv.fr" target="_blank" rel="noopener">cybermalveillance.gouv.fr</a><br>' +
         '<a href="' + root + 'ressources.html">Ressources et numéros utiles</a></div>' +
       '</div>';
+    renderAccount(host.querySelector('.container'));
+  }
+
+  // Une fois hébergé sur Azure Static Web Apps, affiche le compte Microsoft connecté et un lien de déconnexion.
+  // En local (fichier ou serveur de test), /.auth/me n'existe pas : rien ne s'affiche.
+  function renderAccount(container) {
+    if (!/^https?:$/.test(location.protocol) || !window.fetch) return;
+    fetch('/.auth/me', { credentials: 'same-origin' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        var user = data && data.clientPrincipal;
+        if (!user) return;
+        container.insertAdjacentHTML('beforeend',
+          '<div class="account">Connecté : <strong>' + escapeHtml(user.userDetails) + '</strong> · ' +
+          '<a href="/.auth/logout?post_logout_redirect_uri=/">Se déconnecter</a></div>');
+      })
+      .catch(function () { /* hors Azure : pas d'information de connexion */ });
   }
 
   function escapeHtml(str) {

@@ -163,6 +163,7 @@ kbd {
 }
 .site-footer .container { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: space-between; }
 .site-footer a { color: var(--text-muted); }
+.site-footer .account { flex-basis: 100%; padding-top: 12px; border-top: 1px solid var(--border); }
 
 /* ---------- Boutons ---------- */
 .btn {

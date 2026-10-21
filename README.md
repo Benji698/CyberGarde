@@ -24,6 +24,10 @@ perl outils/serveur.pl 8000
 
 puis ouvrir <http://localhost:8000>. Alternative si Python est utilisable : `python3 -m http.server 8000`.
 
+## Mise en ligne
+
+Le site est prévu pour Azure Static Web Apps, avec une connexion obligatoire par compte professionnel Microsoft (Entra ID) et des en-têtes de sécurité stricts. Voir [DEPLOIEMENT.md](DEPLOIEMENT.md).
+
 ## Structure
 
 ```
@@ -34,8 +38,11 @@ assets/js/ui.js               En-tête, pied de page, icônes, utilitaires
 assets/js/quiz-engine.js      Moteur de QCM
 assets/js/simulators.js       Simulateurs du parcours salarié
 assets/js/scenario-engine.js  Moteur de scénario du parcours IT (XP, menace, chrono, badges)
+assets/js/pages/              Script propre à chaque page (aucun JavaScript dans le HTML, pour la CSP)
 data/                         Tout le contenu pédagogique
 outils/serveur.pl             Mini serveur web de développement
+staticwebapp.config.json      Configuration Azure : connexion Microsoft obligatoire, en-têtes de sécurité
+.github/workflows/            Déploiement automatique sur Azure à chaque mise à jour de main
 ```
 
 ## Ajouter ou modifier du contenu
