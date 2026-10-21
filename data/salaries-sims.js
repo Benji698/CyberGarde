@@ -4,7 +4,8 @@ window.DATA_SALARIES_SIMS = {
   liste: [
     { id: 'indices', titre: 'Chasse aux indices', resume: 'Repérez les indices dans un faux mail.' },
     { id: 'vraifaux', titre: 'Vrai ou piège ?', resume: 'Classez des messages et des liens.' },
-    { id: 'appel', titre: 'Le coup de fil', resume: 'Déjouez un appel frauduleux.' }
+    { id: 'appel', titre: 'Le coup de fil', resume: 'Déjouez un appel frauduleux.' },
+    { id: 'boite', titre: 'Ma boîte mail', resume: 'Triez une boîte de réception réaliste.' }
   ],
 
   /* ---------- Simulateur 1 : chasse aux indices ---------- */
@@ -205,6 +206,93 @@ window.DATA_SALARIES_SIMS = {
         fin_moyen: { fin: 'moyen', titre: 'Fraude évitée de justesse', texte: 'En parlant à votre responsable, vous avez cassé le piège. Retenez les signaux dès le premier échange : autorité, urgence, confidentialité, numéro inconnu.' },
         fin_mauvais: { fin: 'mauvais', titre: 'Virement frauduleux', texte: 'Les 48 000 € sont partis vers un compte à l\'étranger. Il faut alerter immédiatement la banque (un rappel des fonds est parfois possible dans les premières heures), la direction, puis porter plainte.' }
       }
+    }
+  ],
+
+  /* ---------- Simulateur 4 : ma boîte mail ----------
+     categorie : 'legit' (à traiter), 'phish' (à signaler), 'spam' (indésirable sans danger, à supprimer).
+     Les liens ne mènent nulle part : leur adresse s'affiche seulement au survol (data-url). */
+  boite: [
+    {
+      nom: 'Ressources humaines', adresse: 'rh@monentreprise.fr', heure: '08:12',
+      objet: 'Campagne des entretiens annuels',
+      apercu: 'Bonjour à toutes et à tous, la campagne des entretiens annuels débute le 3 novembre…',
+      corps: '<p>Bonjour à toutes et à tous,</p><p>La campagne des entretiens annuels débute le 3 novembre. Votre responsable vous proposera un créneau dans les prochains jours.</p><p>Le support de préparation est disponible sur l\'intranet, rubrique « Ma carrière ».</p><p>Le service RH</p>',
+      categorie: 'legit',
+      explication: 'Adresse interne cohérente, aucune urgence, aucun lien ni pièce jointe : on vous renvoie simplement vers l\'intranet que vous connaissez. C\'est un message d\'information légitime.'
+    },
+    {
+      nom: 'Administrateur messagerie', adresse: 'admin@monentreprise-mail.com', heure: '08:31',
+      objet: 'Votre boîte aux lettres est pleine (98 %)',
+      apercu: 'Vous ne pourrez bientôt plus recevoir de messages. Augmentez votre espace…',
+      corps: '<p>Cher utilisateur,</p><p>Votre boîte aux lettres a atteint 98 % de sa capacité. Vous ne pourrez bientôt plus recevoir de messages.</p><p><a href="#" class="fake-btn" data-url="http://monentreprise-mail.com.quota-upgrade.top/owa/login">Augmenter mon espace gratuitement</a></p><p>Équipe Messagerie</p>',
+      categorie: 'phish',
+      explication: 'Le domaine « monentreprise-mail.com » n\'est pas celui de l\'entreprise, la formule « Cher utilisateur » est impersonnelle, et le lien mène vers « quota-upgrade.top ». C\'est une fausse page de connexion qui vole les mots de passe.'
+    },
+    {
+      nom: 'Thomas Leroy', adresse: 'thomas.leroy@monentreprise.fr', heure: '09:05',
+      objet: 'Compte rendu de la réunion de lundi',
+      apercu: 'Salut, comme convenu, voici le compte rendu de lundi avec les actions de chacun…',
+      corps: '<p>Salut,</p><p>Comme convenu en fin de réunion, voici le compte rendu de lundi avec les actions de chacun. Dis-moi si j\'ai oublié quelque chose de ton côté.</p><p>Bonne journée,<br>Thomas</p>',
+      pj: 'CR_reunion_projet_Atlas.docx',
+      categorie: 'legit',
+      explication: 'Un collègue, son adresse interne, une pièce jointe attendue (il avait annoncé le compte rendu) et au format habituel : rien de suspect. Le contexte compte : vous attendiez ce document.'
+    },
+    {
+      nom: 'DocuSign', adresse: 'dse@docusign-notification.net', heure: '09:47',
+      objet: 'Document en attente de signature : Avenant_Contrat_2026.pdf',
+      apercu: 'Vous avez reçu un document à examiner et à signer. Le lien expire dans 12 heures…',
+      corps: '<p>Vous avez reçu un document à examiner et à signer.</p><p><strong>Avenant_Contrat_2026.pdf</strong><br>Le lien expire dans 12 heures.</p><p><a href="#" class="fake-btn" data-url="https://docusign-notification.net.secure-docs.click/review?doc=88421">EXAMINER LE DOCUMENT</a></p>',
+      categorie: 'phish',
+      explication: 'Vous n\'attendiez aucun avenant, le délai de 12 heures met la pression, et le lien mène vers « secure-docs.click ». Les faux services de signature électronique sont très utilisés pour voler des identifiants.'
+    },
+    {
+      nom: 'Fournitures Pro', adresse: 'newsletter@fournitures-pro.fr', heure: '10:02',
+      objet: '-30 % sur les fournitures de bureau cette semaine',
+      apercu: 'Profitez de nos offres de rentrée sur les cahiers, stylos et classeurs…',
+      corps: '<p>Profitez de nos offres de la semaine : -30 % sur les cahiers, stylos et classeurs.</p><p>Offre valable jusqu\'à dimanche sur notre site.</p><p><small>Vous recevez ce message car vous êtes inscrit à notre lettre d\'information. <a href="#" data-url="https://www.fournitures-pro.fr/desinscription">Se désinscrire</a></small></p>',
+      categorie: 'spam',
+      explication: 'Une simple publicité d\'un fournisseur auquel vous êtes abonné : ni demande de mot de passe, ni urgence, ni pièce jointe. Elle n\'est pas dangereuse, mais inutile pour votre travail : on la supprime (ou on se désinscrit).'
+    },
+    {
+      nom: 'Colis Express', adresse: 'suivi@colis-express-livraison.info', heure: '10:26',
+      objet: 'Échec de livraison de votre colis',
+      apercu: 'Notre livreur n\'a pas pu remettre votre colis. Reprogrammez la livraison…',
+      corps: '<p>Bonjour,</p><p>Notre livreur n\'a pas pu remettre votre colis n° CX-559201 en raison d\'une adresse incomplète.</p><p>Des frais de reprogrammation de 1,49 € sont nécessaires.</p><p><a href="#" class="fake-btn" data-url="http://colis-express-livraison.info/paiement-frais">Reprogrammer ma livraison</a></p>',
+      categorie: 'phish',
+      explication: 'Vous n\'attendez pas de colis au bureau, et les « petits frais » servent à voler votre carte bancaire. Le domaine en « .info » n\'est celui d\'aucun transporteur connu.'
+    },
+    {
+      nom: 'Service informatique', adresse: 'support@monentreprise.fr', heure: '11:15',
+      objet: 'Mises à jour Windows ce soir',
+      apercu: 'Des mises à jour de sécurité seront installées ce soir à partir de 19 h…',
+      corps: '<p>Bonjour,</p><p>Des mises à jour de sécurité seront installées ce soir à partir de 19 h. Merci d\'enregistrer vos documents et de laisser votre poste allumé et branché en partant.</p><p>Aucune autre action n\'est nécessaire. En cas de question : poste 4400.</p><p>Le service informatique</p>',
+      categorie: 'legit',
+      explication: 'Adresse interne, aucun lien, aucun identifiant demandé, un numéro de poste interne pour les questions : c\'est une consigne légitime du service informatique.'
+    },
+    {
+      nom: 'Philippe Marchand', adresse: 'philippe.marchand.dg@gmail.com', heure: '11:48',
+      objet: 'Es-tu disponible ?',
+      apercu: 'J\'ai besoin d\'un petit service discret, réponds-moi vite stp…',
+      corps: '<p>Bonjour,</p><p>Es-tu à ton bureau ? J\'ai besoin d\'un petit service discret pour un client, je suis en réunion et je ne peux pas téléphoner.</p><p>Réponds-moi vite stp.</p><p>Philippe Marchand<br>Directeur général<br><small>Envoyé depuis mon mobile</small></p>',
+      categorie: 'phish',
+      explication: 'Le directeur général qui écrit depuis une adresse Gmail, demande un service « discret » et ne peut pas téléphoner : c\'est le début classique d\'une arnaque au président (souvent pour des cartes cadeaux ou un virement). On ne répond pas et on signale.'
+    },
+    {
+      nom: 'Comptabilité', adresse: 'compta@monentreprise.fr', heure: '14:20',
+      objet: 'Votre note de frais de septembre est validée',
+      apercu: 'Votre note de frais n° NF-2026-0917 a été validée. Le remboursement sera versé…',
+      corps: '<p>Bonjour,</p><p>Votre note de frais n° NF-2026-0917 a été validée. Le remboursement sera versé avec votre prochain salaire.</p><p>Vous pouvez consulter le détail dans l\'application des notes de frais : <a href="#" data-url="https://intranet.monentreprise.fr/notes-de-frais">intranet.monentreprise.fr/notes-de-frais</a></p><p>Le service comptabilité</p>',
+      categorie: 'legit',
+      explication: 'Adresse interne, lien qui pointe bien vers l\'intranet de l\'entreprise (survolez-le pour vérifier), aucune information demandée. C\'est un message légitime.'
+    },
+    {
+      nom: 'Salon Pro Expo', adresse: 'invitations@salon-pro-expo.com', heure: '16:03',
+      objet: 'Invitation : Salon des professionnels du bureau, 12-14 mars',
+      apercu: 'Découvrez plus de 200 exposants. Inscription gratuite sur notre site…',
+      corps: '<p>Madame, Monsieur,</p><p>Nous avons le plaisir de vous inviter au Salon des professionnels du bureau, du 12 au 14 mars. Plus de 200 exposants vous y attendent.</p><p>Inscription gratuite sur notre site.</p><p><small>Pour ne plus recevoir nos invitations : <a href="#" data-url="https://www.salon-pro-expo.com/desabonnement">désabonnement</a></small></p>',
+      categorie: 'spam',
+      explication: 'Une invitation commerciale non sollicitée, sans demande d\'identifiant ni pièce jointe. Ce n\'est pas une attaque, simplement du courrier indésirable : on la supprime.'
     }
   ]
 };

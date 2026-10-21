@@ -15,7 +15,7 @@
     <div class="container page-head">
       <div class="breadcrumb"><a href="../index.html">Accueil</a> › Parcours salarié</div>
       <h1>Parcours salarié</h1>
-      <p class="lead">Phishing, faux appels, arnaque au président : apprenez à reconnaître les manipulations qui visent les personnes, puis entraînez-vous sans risque.</p>
+      <p class="lead">Phishing, faux appels, arnaque au président, mais aussi mots de passe, IA, télétravail et protection des données : apprenez les bons réflexes, puis entraînez-vous sans risque.</p>
     </div>
 
     <div class="container section-sm">
@@ -29,19 +29,19 @@
         <a class="card card-link path-card" href="cours.html">
           <div class="card-icon" data-icon="book"></div>
           <h3>1. Le cours</h3>
-          <p class="muted">6 fiches courtes : les indices d'un faux mail, les SMS piégés, les faux appels, l'arnaque au président, les réseaux sociaux et que faire si l'on a cliqué.</p>
+          <p class="muted">12 fiches courtes en deux parties : reconnaître les manipulations (faux mails, SMS, appels, arnaque au président…), puis les bons réflexes du quotidien (mots de passe, IA, télétravail, données, sécurité physique, mises à jour).</p>
           <span class="btn btn-primary">Lire le cours</span>
         </a>
         <a class="card card-link path-card" href="simulateurs.html">
           <div class="card-icon" data-icon="mail"></div>
           <h3>2. Les simulateurs</h3>
-          <p class="muted">Repérez les indices dans un faux mail, classez des messages en « légitime » ou « piège », et déjouez un faux appel téléphonique.</p>
+          <p class="muted">Repérez les indices dans un faux mail, classez des messages en « légitime » ou « piège », déjouez un faux appel et triez une boîte de réception.</p>
           <span class="btn btn-primary">S'entraîner</span>
         </a>
         <a class="card card-link path-card" href="quiz.html">
           <div class="card-icon" data-icon="target"></div>
           <h3>3. Le QCM</h3>
-          <p class="muted">15 situations du quotidien pour vérifier que vous avez les bons réflexes. Votre meilleur score est enregistré.</p>
+          <p class="muted">26 situations du quotidien pour vérifier que vous avez les bons réflexes. Votre meilleur score est enregistré.</p>
           <span class="btn btn-primary">Passer le QCM</span>
         </a>
       </div>
@@ -57,6 +57,7 @@
   <script src="../assets/js/ui.js"></script>
   <script src="../data/salaries-sims.js"></script>
   <script>
+    var NB_FICHES = 12;
     function render() {
       var lus = Store.get('salaries.coursLus', []).length;
       var quizBest = Store.get('salaries.quiz.best', null);
@@ -65,7 +66,7 @@
       var simsDone = simDefs.filter(function (s) { return sims[s.id] != null; }).length;
 
       var steps = [
-        { label: 'Cours lus', value: lus + ' / 6', done: lus >= 6, part: lus / 6 },
+        { label: 'Cours lus', value: lus + ' / ' + NB_FICHES, done: lus >= NB_FICHES, part: Math.min(1, lus / NB_FICHES) },
         { label: 'Simulateurs terminés', value: simsDone + ' / ' + simDefs.length, done: simsDone === simDefs.length, part: simsDone / simDefs.length },
         { label: 'QCM (meilleur score)', value: quizBest == null ? 'Pas encore passé' : quizBest + ' %', done: quizBest != null && quizBest >= 80, part: quizBest == null ? 0 : Math.min(1, quizBest / 80) }
       ];

@@ -270,6 +270,10 @@ kbd {
   flex: none; width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center;
   background: var(--primary-soft); color: var(--primary); font-size: 1rem; font-weight: 800;
 }
+.part-label {
+  font-size: .85rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+  color: var(--accent); margin: 8px 0 12px;
+}
 .lesson-foot { display: flex; justify-content: flex-end; margin-top: 12px; }
 .mark-read[aria-pressed="true"] { background: var(--success-soft); color: var(--success); border-color: transparent; }
 .example-box {
@@ -282,7 +286,7 @@ th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--bo
 th { background: var(--surface-2); font-weight: 700; }
 
 @media (max-width: 860px) {
-  .course-layout { grid-template-columns: 1fr; }
+  .course-layout { grid-template-columns: minmax(0, 1fr); }
   .course-toc { position: static; }
 }
 
@@ -465,6 +469,39 @@ th { background: var(--surface-2); font-weight: 700; }
 .call-choices { padding: 0 20px 20px; }
 .call-log .bubble.in { align-self: flex-start; }
 .call-log .bubble.out { align-self: flex-end; }
+
+/* ---------- Simulateur : ma boîte mail ---------- */
+.inbox-progress { margin-bottom: 16px; }
+.inbox-layout { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 20px; align-items: start; }
+.inbox-list {
+  list-style: none; margin: 0; padding: 0; border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--surface); overflow: hidden; box-shadow: var(--shadow);
+}
+.inbox-list li + li { border-top: 1px solid var(--border); }
+.inbox-item {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 2px; width: 100%; text-align: left;
+  padding: 12px 14px; border: 0; border-left: 4px solid transparent; background: none;
+  color: var(--text); font: inherit; cursor: pointer;
+}
+.inbox-item:hover { background: var(--surface-2); }
+.inbox-item.active { background: var(--primary-soft); border-left-color: var(--primary); }
+.inbox-from { display: flex; justify-content: space-between; width: 100%; gap: 8px; font-size: .92rem; }
+.inbox-from small { color: var(--text-muted); font-weight: 400; flex: none; }
+.inbox-subject { font-size: .9rem; }
+.inbox-preview {
+  font-size: .82rem; color: var(--text-muted); width: 100%;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.inbox-item.unread .inbox-from, .inbox-item.unread .inbox-subject { font-weight: 750; }
+.inbox-item .tag { margin-top: 6px; }
+.inbox-actions { display: flex; flex-wrap: wrap; gap: 10px; padding: 16px 20px 0; }
+.inbox-feedback { padding: 0 20px 20px; }
+.inbox-feedback:empty { padding-bottom: 4px; }
+@media (max-width: 860px) {
+  .inbox-layout { grid-template-columns: 1fr; }
+  .inbox-list { max-height: 360px; overflow-y: auto; }
+  .inbox-reader { scroll-margin-top: 84px; }
+}
 
 /* ---------- Parcours IT : carte des niveaux ---------- */
 .player-bar {

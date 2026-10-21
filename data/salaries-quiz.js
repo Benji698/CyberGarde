@@ -133,5 +133,101 @@ window.DATA_SALARIES_QUIZ = [
       { t: 'Je clique, mais je ne saisirai rien si la page me paraît bizarre.', ok: false }
     ],
     explication: 'Les phishings modernes, souvent rédigés avec l\'aide d\'outils d\'IA, sont sans fautes et reprennent logos et signatures. Le vrai indice est technique : le lien ne pointe pas vers le domaine officiel. Survoler un lien avant de cliquer est un réflexe essentiel.'
+  },
+  {
+    situation: 'Vous devez créer un compte sur un nouvel outil de l\'entreprise. Quel mot de passe choisissez-vous ?',
+    choix: [
+      { t: 'Le même que pour ma messagerie : je suis sûr de m\'en souvenir.', ok: false },
+      { t: 'Le prénom de mon fils suivi de son année de naissance et d\'un point d\'exclamation.', ok: false },
+      { t: 'Un mot de passe unique et long, créé et retenu par le gestionnaire de mots de passe.', ok: true }
+    ],
+    explication: 'Réutiliser un mot de passe permet à un escroc d\'ouvrir tous vos comptes dès qu\'un seul site fuit. Les prénoms et dates se trouvent facilement sur les réseaux sociaux. Un gestionnaire crée un mot de passe différent et robuste pour chaque service, sans effort de mémoire.'
+  },
+  {
+    situation: 'Vous partez en congés. Un collègue vous demande votre mot de passe pour pouvoir consulter vos dossiers pendant votre absence.',
+    choix: [
+      { t: 'Je le lui donne, c\'est un collègue de confiance.', ok: false },
+      { t: 'Je refuse et je demande au service informatique de lui ouvrir l\'accès aux dossiers nécessaires.', ok: true },
+      { t: 'Je l\'écris sur un post-it que je laisse dans mon tiroir.', ok: false }
+    ],
+    explication: 'Un mot de passe est strictement personnel : tout ce qui est fait avec votre compte vous est attribué. Le service informatique peut donner un accès propre aux dossiers partagés, sans qu\'il ait besoin de votre identité.'
+  },
+  {
+    situation: 'Pour gagner du temps, vous voulez demander à une IA en ligne gratuite de résumer un contrat client confidentiel de 30 pages.',
+    choix: [
+      { t: 'Je copie-colle le contrat entier, c\'est plus rapide.', ok: false },
+      { t: 'J\'utilise l\'outil d\'IA validé par l\'entreprise ou, à défaut, je le résume moi-même.', ok: true },
+      { t: 'Je colle le contrat en retirant seulement le nom du client.', ok: false }
+    ],
+    explication: 'Ce que vous saisissez dans une IA publique quitte l\'entreprise et peut être conservé ou réutilisé. Retirer le nom ne suffit pas : montants, clauses et détails restent confidentiels. Seuls les outils validés par l\'entreprise offrent les garanties nécessaires.'
+  },
+  {
+    situation: 'En visioconférence, votre directeur financier vous demande un virement urgent à un nouveau fournisseur. L\'image est un peu saccadée et il refuse que vous le rappeliez : « Pas le temps, je suis en réunion ».',
+    choix: [
+      { t: 'Je fais le virement : je le vois et je l\'entends, c\'est bien lui.', ok: false },
+      { t: 'Je raccroche et je le rappelle sur son numéro habituel, puis j\'applique la procédure de validation.', ok: true },
+      { t: 'Je lui demande d\'allumer mieux sa caméra, puis je fais le virement.', ok: false }
+    ],
+    explication: 'Les voix et les visages peuvent désormais être imités par l\'IA (deepfake). Urgence, demande inhabituelle et refus d\'être rappelé sont les signaux d\'une arnaque au président version moderne. Le contre-appel sur un numéro connu reste la meilleure parade.'
+  },
+  {
+    situation: 'À la gare, vous devez envoyer un document de travail. Un réseau Wi-Fi « Gare_WiFi_Gratuit » est disponible, sans mot de passe.',
+    choix: [
+      { t: 'Je me connecte, c\'est pratique et gratuit.', ok: false },
+      { t: 'J\'utilise le partage de connexion de mon téléphone, ou le VPN de l\'entreprise si je dois utiliser ce Wi-Fi.', ok: true }
+    ],
+    explication: 'Sur un Wi-Fi public, le trafic peut être espionné, et n\'importe qui peut créer un faux point d\'accès au nom rassurant. Le VPN chiffre vos échanges ; le partage de connexion évite le réseau partagé.'
+  },
+  {
+    situation: 'En télétravail, votre fils vous demande d\'utiliser votre ordinateur professionnel pour faire ses devoirs et jouer un peu ensuite.',
+    choix: [
+      { t: 'J\'accepte pour les devoirs, mais pas pour les jeux.', ok: false },
+      { t: 'Je refuse : l\'ordinateur professionnel est réservé au travail.', ok: true },
+      { t: 'J\'accepte en restant à côté de lui.', ok: false }
+    ],
+    explication: 'Un téléchargement, un site piégé ou une fausse manipulation peuvent infecter l\'ordinateur, qui se reconnectera ensuite au réseau de l\'entreprise. Il donne aussi accès à des données confidentielles. Mieux vaut utiliser un appareil familial.'
+  },
+  {
+    situation: 'Vendredi soir, vous voulez avancer sur un dossier ce week-end. Vous pensez envoyer le fichier clients sur votre adresse mail personnelle.',
+    choix: [
+      { t: 'Je l\'envoie, je le supprimerai lundi.', ok: false },
+      { t: 'Je passe par les accès prévus par l\'entreprise (VPN, ordinateur professionnel) ou j\'attends lundi.', ok: true },
+      { t: 'Je le copie sur une clé USB personnelle.', ok: false }
+    ],
+    explication: 'Une fois sur votre messagerie ou votre clé personnelle, les données sortent de l\'entreprise : elles ne sont plus protégées, ni sauvegardées, ni contrôlées. Avec des données clients, c\'est aussi une violation du RGPD.'
+  },
+  {
+    situation: 'Vous venez d\'envoyer par erreur un tableau contenant les salaires de l\'équipe à un contact extérieur qui porte le même prénom qu\'un collègue.',
+    choix: [
+      { t: 'J\'envoie un mail au destinataire pour lui demander de le supprimer, et je n\'en parle à personne.', ok: false },
+      { t: 'Je préviens immédiatement mon responsable et le service informatique ou le délégué à la protection des données.', ok: true },
+      { t: 'Je ne fais rien, il ne l\'ouvrira sans doute pas.', ok: false }
+    ],
+    explication: 'C\'est une violation de données personnelles : l\'entreprise doit l\'évaluer et, si besoin, la notifier à la CNIL dans les 72 heures. Le signaler tout de suite permet parfois de rappeler le message et de limiter les conséquences. Le cacher aggrave la situation.'
+  },
+  {
+    situation: 'À l\'aéroport, la batterie de votre téléphone professionnel est presque vide. Une borne propose des ports USB de recharge gratuits.',
+    choix: [
+      { t: 'J\'y branche mon téléphone avec mon câble.', ok: false },
+      { t: 'J\'utilise mon propre chargeur sur une prise électrique, ou une batterie externe.', ok: true }
+    ],
+    explication: 'Un port USB transmet du courant mais aussi des données : une borne trafiquée peut tenter d\'accéder au téléphone. Une prise électrique avec votre propre chargeur ne présente pas ce risque.'
+  },
+  {
+    situation: 'En lisant un article en ligne, une fenêtre s\'affiche : « Votre navigateur est obsolète ! Téléchargez la mise à jour de sécurité ».',
+    choix: [
+      { t: 'Je clique sur « Télécharger », les mises à jour sont importantes.', ok: false },
+      { t: 'Je ferme la page et je vérifie les mises à jour dans les paramètres du navigateur ou auprès du service informatique.', ok: true }
+    ],
+    explication: 'Les fausses mises à jour sont un moyen classique d\'installer un logiciel malveillant. Les vraies mises à jour passent par les paramètres de l\'appareil ou par le service informatique, jamais par une fenêtre sur un site.'
+  },
+  {
+    situation: 'Vous vous levez deux minutes pour aller chercher une impression. Votre messagerie est ouverte.',
+    choix: [
+      { t: 'Je verrouille ma session (Windows + L).', ok: true },
+      { t: 'J\'éteins l\'écran.', ok: false },
+      { t: 'Rien, je reviens tout de suite.', ok: false }
+    ],
+    explication: 'Quelques secondes suffisent pour envoyer un mail en votre nom ou brancher une clé. Éteindre l\'écran ne verrouille rien : il suffit de le rallumer. Le verrouillage doit devenir un automatisme.'
   }
 ];
