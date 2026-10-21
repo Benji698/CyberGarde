@@ -6,7 +6,7 @@ Site statique (HTML/CSS/JavaScript, sans dépendance ni compilation) réalisé d
 
 | Parcours | Public | Contenu |
 |---|---|---|
-| **Salariés** (`salaries/`) | Non techniques | Cours phishing & ingénierie sociale (6 fiches), 3 simulateurs (chasse aux indices dans un faux mail, vrai ou piège, faux appel), QCM de 15 situations |
+| **Salariés** (`salaries/`) | Non techniques | 12 fiches : phishing & ingénierie sociale, puis mots de passe/MFA, IA générative, télétravail, protection des données, sécurité physique, mises à jour. 4 simulateurs (chasse aux indices dans un faux mail, vrai ou piège, faux appel, tri d'une boîte de réception), QCM de 26 situations |
 | **Étudiants IT** (`it/`) | Étudiants / techniciens | 5 niveaux (Stagiaire → Technicien → Admin sys → Analyste SOC → RSSI), chacun avec un cours et un scénario à embranchements : XP, jauge de menace, chronomètre à partir du niveau 3, 9 badges, déblocage à 70 % |
 | **Ressources** (`ressources.html`) | Tous | Contacts utiles (17Cyber, 33700…), fiche « 10 réflexes » imprimable, glossaire filtrable |
 
@@ -44,6 +44,7 @@ Le contenu est séparé du code : il suffit d'éditer les fichiers de `data/`.
 
 - **Question de QCM** (`data/salaries-quiz.js`) : `{ situation, choix: [{ t, ok }], explication }`.
 - **Message « vrai ou piège »** (`data/salaries-sims.js`) : `{ type: 'sms'|'url'|'mail', contenu, piege, explication }`.
+- **Mail de « Ma boîte mail »** (`data/salaries-sims.js`, tableau `boite`) : `{ nom, adresse, heure, objet, apercu, corps, pj?, categorie: 'legit'|'phish'|'spam', explication }`.
 - **Décision d'un scénario IT** (`data/it-levels.js`) : un nœud `{ etape, texte, contexte?, choix: [{ t, note: 'best'|'ok'|'bad', fb, suite }] }`, où `suite` est l'identifiant du nœud suivant. Un nœud `{ fin: 'auto', succes, partiel }` termine le scénario.
 
 Barème des scénarios : meilleure décision = 100 XP (+25 si rapide), acceptable = 40 XP, erreur = 0 XP. La jauge de menace baisse de 10, monte de 10 ou de 25 ; à 100 %, le scénario est perdu.

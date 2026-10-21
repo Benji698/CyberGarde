@@ -14,8 +14,8 @@
   <main>
     <div class="container page-head">
       <div class="breadcrumb"><a href="index.html">Parcours salarié</a> › Cours</div>
-      <h1>Phishing et ingénierie sociale</h1>
-      <p class="lead">L'ingénierie sociale, c'est l'art de manipuler une personne pour lui faire faire quelque chose : cliquer, payer, donner un mot de passe. Pas besoin d'être informaticien pour s'en protéger, il suffit de connaître les ficelles.</p>
+      <h1>Les bons réflexes cyber au travail</h1>
+      <p class="lead">Deux parties : d'abord reconnaître les manipulations (phishing, faux appels, arnaque au président), puis adopter les bons réflexes du quotidien (mots de passe, IA, télétravail, données). Pas besoin d'être informaticien pour se protéger, il suffit de connaître les ficelles.</p>
     </div>
 
     <div class="container section-sm">
@@ -29,11 +29,18 @@
             <li><a href="#l4" data-lesson="l4">L'arnaque au président</a></li>
             <li><a href="#l5" data-lesson="l5">Réseaux sociaux</a></li>
             <li><a href="#l6" data-lesson="l6">J'ai cliqué : que faire ?</a></li>
+            <li><a href="#l7" data-lesson="l7">Mots de passe et double authentification</a></li>
+            <li><a href="#l8" data-lesson="l8">L'IA générative au travail</a></li>
+            <li><a href="#l9" data-lesson="l9">Télétravail et mobilité</a></li>
+            <li><a href="#l10" data-lesson="l10">Protéger les données</a></li>
+            <li><a href="#l11" data-lesson="l11">Sécurité physique</a></li>
+            <li><a href="#l12" data-lesson="l12">Mises à jour et verrouillage</a></li>
           </ol>
           <div style="margin-top:16px" id="course-progress"></div>
         </nav>
 
         <div>
+          <p class="part-label">Partie 1 · Reconnaître les manipulations</p>
           <article class="lesson card" id="l1">
             <h2><span class="num">1</span> Le phishing par e-mail</h2>
             <p>Le <strong>phishing</strong> (ou hameçonnage) est un faux message qui imite une source de confiance (banque, service informatique, livreur, administration…) pour vous pousser à <strong>cliquer sur un lien</strong>, <strong>ouvrir une pièce jointe</strong> ou <strong>donner des informations</strong>.</p>
@@ -159,6 +166,158 @@
               <p>Mails : <a href="https://www.signal-spam.fr" target="_blank" rel="noopener">signal-spam.fr</a> · SMS : <strong>33700</strong> · Aide aux victimes : <a href="https://www.17cyber.gouv.fr" target="_blank" rel="noopener">17cyber.gouv.fr</a>. Retrouvez tous les contacts sur la page <a href="../ressources.html">Ressources</a>.</p>
             </div>
             <div class="lesson-foot"><button type="button" class="btn btn-secondary mark-read" data-lesson="l6" aria-pressed="false">Marquer comme lu</button></div>
+          </article>
+
+          <p class="part-label">Partie 2 · Les bons réflexes du quotidien</p>
+
+          <article class="lesson card" id="l7">
+            <h2><span class="num">7</span> Mots de passe et double authentification</h2>
+            <p>Votre mot de passe est la clé de vos comptes. S'il est deviné ou volé, quelqu'un peut lire vos mails, accéder aux fichiers de l'entreprise ou se faire passer pour vous.</p>
+            <h3>Le piège n°1 : réutiliser le même mot de passe</h3>
+            <p>Des sites se font régulièrement pirater et leurs listes de mots de passe circulent sur Internet. Si vous utilisez le même mot de passe partout, la fuite d'un site de jardinage suffit à ouvrir votre messagerie professionnelle : les escrocs testent automatiquement les identifiants volés sur des milliers de sites.</p>
+            <h3>Un bon mot de passe</h3>
+            <div class="grid grid-2">
+              <div class="example-box mt-0"><strong>✗ À éviter</strong><br><code>Soleil2026!</code>, le prénom de vos enfants, votre date de naissance, le nom de l'entreprise suivi de l'année.</div>
+              <div class="example-box mt-0"><strong>✓ Une phrase de passe</strong><br>Plusieurs mots sans lien entre eux, par exemple <code>Girafe-Tambour-Orage-Cerise</code> (n'utilisez pas celle-ci !). Longue, donc solide, et facile à retenir.</div>
+            </div>
+            <p style="margin-top:16px">Le plus simple : un <strong>gestionnaire de mots de passe</strong> (celui fourni par votre entreprise, ou par exemple KeePassXC, Bitwarden). Il crée et retient un mot de passe différent pour chaque site ; vous n'avez plus qu'un seul mot de passe à mémoriser.</p>
+            <h3>La double authentification (MFA)</h3>
+            <p>En plus du mot de passe, on vous demande une seconde preuve : un code dans une application, une notification à valider sur votre téléphone, une clé de sécurité. Même si votre mot de passe est volé, l'escroc reste bloqué. <strong>Activez-la partout où c'est possible</strong>, à commencer par la messagerie et la banque.</p>
+            <div class="callout warn">
+              <div class="callout-title">⚠ Une demande de validation que vous n'avez pas faite ?</div>
+              <p>Si votre téléphone vous demande d'approuver une connexion alors que vous n'essayez pas de vous connecter, quelqu'un connaît votre mot de passe. <strong>Refusez</strong>, changez votre mot de passe et prévenez le service informatique. N'approuvez jamais « pour que ça s'arrête ».</p>
+            </div>
+            <div class="callout retenir">
+              <div class="callout-title">À retenir</div>
+              <ul>
+                <li>Un mot de passe différent par service, idéalement dans un gestionnaire.</li>
+                <li>Votre mot de passe est personnel : on ne le donne à personne, ni à un collègue ni au service informatique.</li>
+                <li>Pas de post-it sous le clavier, pas de fichier « mots de passe.txt ».</li>
+              </ul>
+            </div>
+            <div class="lesson-foot"><button type="button" class="btn btn-secondary mark-read" data-lesson="l7" aria-pressed="false">Marquer comme lu</button></div>
+          </article>
+
+          <article class="lesson card" id="l8">
+            <h2><span class="num">8</span> L'IA générative au travail</h2>
+            <p>ChatGPT, Copilot, Gemini, Le Chat… Les assistants d'intelligence artificielle font gagner du temps pour rédiger, résumer ou traduire. Mais ce que vous leur écrivez <strong>quitte l'entreprise</strong> : selon l'outil et l'abonnement, vos textes peuvent être conservés, relus ou servir à entraîner le modèle.</p>
+            <h3>Ce qu'on ne colle jamais dans une IA publique</h3>
+            <ul>
+              <li>Des données sur des clients, des salariés ou des patients (noms, adresses, salaires, santé…).</li>
+              <li>Des contrats, devis, chiffres financiers ou projets non publiés.</li>
+              <li>Du code source, des mots de passe, des clés d'accès.</li>
+              <li>Tout document marqué « interne » ou « confidentiel ».</li>
+            </ul>
+            <div class="callout faire">
+              <div class="callout-title">✓ Que faire ?</div>
+              <ul>
+                <li>Utilisez uniquement les outils d'IA <strong>validés par votre entreprise</strong> (souvent une version « entreprise » qui ne réutilise pas vos données).</li>
+                <li>En cas de doute, anonymisez : remplacez les noms et chiffres par des exemples.</li>
+                <li>Relisez toujours la réponse : une IA peut inventer des faits, des chiffres ou des sources avec beaucoup d'assurance.</li>
+              </ul>
+            </div>
+            <h3>Les deepfakes : quand on imite une voix ou un visage</h3>
+            <p>Quelques secondes d'enregistrement suffisent aujourd'hui pour imiter une voix, et la vidéo peut aussi être truquée. En 2024, à Hong Kong, un employé a viré l'équivalent de 25 millions de dollars après une visioconférence où son « directeur financier » et ses « collègues » étaient en réalité des deepfakes.</p>
+            <div class="example-box">
+              <strong>Les signes qui doivent alerter :</strong> une demande urgente et inhabituelle (virement, mot de passe, document sensible), une image ou une voix légèrement décalée, une excuse pour ne pas pouvoir rappeler, un nouveau numéro ou un nouveau compte.
+            </div>
+            <div class="callout retenir">
+              <div class="callout-title">À retenir</div>
+              <p>Une voix ou un visage familier ne prouvent plus une identité. Pour toute demande sensible, raccrochez et rappelez la personne sur un numéro que vous connaissez déjà, ou posez une question que seule la vraie personne peut connaître.</p>
+            </div>
+            <div class="lesson-foot"><button type="button" class="btn btn-secondary mark-read" data-lesson="l8" aria-pressed="false">Marquer comme lu</button></div>
+          </article>
+
+          <article class="lesson card" id="l9">
+            <h2><span class="num">9</span> Télétravail et mobilité</h2>
+            <p>Hors du bureau, vous ne bénéficiez plus des protections du réseau de l'entreprise. Quelques habitudes suffisent à travailler en sécurité depuis chez vous, le train ou l'hôtel.</p>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Situation</th><th>Le bon réflexe</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Wi-Fi public</strong> (gare, café, hôtel)</td><td>Activez le <strong>VPN</strong> de l'entreprise, ou utilisez le partage de connexion de votre téléphone. Méfiez-vous des réseaux au nom trop accueillant (« Free_WiFi_Gare ») : n'importe qui peut créer un faux point d'accès.</td></tr>
+                  <tr><td><strong>Dans le train</strong></td><td>Votre voisin peut lire votre écran ou écouter votre appel. Utilisez un filtre de confidentialité et évitez les conversations sensibles.</td></tr>
+                  <tr><td><strong>À la maison</strong></td><td>L'ordinateur professionnel est réservé au travail : on ne le prête pas aux enfants pour les devoirs ou les jeux, et on n'y installe pas de logiciels personnels.</td></tr>
+                  <tr><td><strong>La box Internet</strong></td><td>Changez le mot de passe Wi-Fi par défaut et laissez la box se mettre à jour.</td></tr>
+                  <tr><td><strong>Appareils personnels</strong></td><td>Ne transférez pas de fichiers professionnels sur votre téléphone ou ordinateur personnel sans autorisation.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="callout warn">
+              <div class="callout-title">⚠ Perte ou vol</div>
+              <p>Ordinateur ou téléphone professionnel perdu ou volé ? Prévenez <strong>immédiatement</strong> le service informatique, même la nuit ou le week-end : il peut bloquer les accès et effacer l'appareil à distance. Et ne laissez jamais votre ordinateur visible dans une voiture.</p>
+            </div>
+            <div class="lesson-foot"><button type="button" class="btn btn-secondary mark-read" data-lesson="l9" aria-pressed="false">Marquer comme lu</button></div>
+          </article>
+
+          <article class="lesson card" id="l10">
+            <h2><span class="num">10</span> Protéger les données</h2>
+            <p>Toutes les informations n'ont pas la même valeur. Savoir ce qui est sensible permet de choisir comment le stocker, le partager et le jeter.</p>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Niveau</th><th>Exemples</th><th>Peut-on le partager ?</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="tag ok">Public</span></td><td>Plaquette commerciale, offres d'emploi, site web.</td><td>Oui, avec tout le monde.</td></tr>
+                  <tr><td><span class="tag info">Interne</span></td><td>Organigramme, procédures, notes de service.</td><td>Avec les collègues uniquement.</td></tr>
+                  <tr><td><span class="tag warn">Confidentiel</span></td><td>Fichiers clients, contrats, salaires, dossiers RH, chiffres financiers.</td><td>Seulement avec les personnes qui en ont besoin.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <h3>Les erreurs les plus fréquentes</h3>
+            <ul>
+              <li><strong>Envoyer des fichiers sur sa messagerie personnelle</strong> ou un cloud personnel pour « travailler ce week-end » : les données sortent de l'entreprise et ne sont plus protégées.</li>
+              <li><strong>Se tromper de destinataire</strong> à cause de l'autocomplétion : vérifiez toujours les adresses avant d'envoyer, surtout avec une pièce jointe.</li>
+              <li><strong>Mettre tout le monde en copie visible</strong> lors d'un envoi groupé à des personnes extérieures : utilisez le champ « Cci ».</li>
+              <li><strong>Oublier des documents</strong> sur l'imprimante ou les jeter à la poubelle : utilisez le broyeur pour tout ce qui est confidentiel.</li>
+            </ul>
+            <h3>Le RGPD, côté salarié</h3>
+            <p>Une <strong>donnée personnelle</strong> est toute information qui concerne une personne : nom, adresse mail, numéro de téléphone, photo, salaire… Le RGPD impose à l'entreprise de les protéger. Concrètement, cela veut dire : n'accéder qu'aux données dont on a besoin pour son travail, ne pas les conserver « au cas où », et ne pas les copier hors des outils prévus.</p>
+            <div class="callout faire">
+              <div class="callout-title">✓ Une fuite ou une erreur d'envoi ?</div>
+              <p>Prévenez <strong>tout de suite</strong> votre responsable et le service informatique (ou le délégué à la protection des données). L'entreprise n'a que 72 heures pour notifier la CNIL : chaque heure compte, et personne ne vous reprochera d'avoir signalé votre erreur.</p>
+            </div>
+            <div class="lesson-foot"><button type="button" class="btn btn-secondary mark-read" data-lesson="l10" aria-pressed="false">Marquer comme lu</button></div>
+          </article>
+
+          <article class="lesson card" id="l11">
+            <h2><span class="num">11</span> Sécurité physique</h2>
+            <p>Un escroc n'a pas toujours besoin d'Internet : entrer dans les locaux lui permet de brancher un appareil, de photographier un écran ou d'emporter un document.</p>
+            <ul>
+              <li><strong>La porte tenue</strong> : profiter de la politesse pour entrer derrière quelqu'un s'appelle le « tailgating ». Une personne sans badge ? Proposez-lui poliment de l'accompagner à l'accueil.</li>
+              <li><strong>Le badge</strong> : il est personnel, ne se prête jamais et ne se photographie pas pour les réseaux sociaux. Perdu ? Signalez-le pour qu'il soit désactivé.</li>
+              <li><strong>Les visiteurs</strong> : ils s'enregistrent à l'accueil et restent accompagnés dans les zones de travail.</li>
+              <li><strong>Le bureau propre</strong> : en partant, rangez les documents sensibles et ne laissez aucun mot de passe en évidence.</li>
+              <li><strong>Les clés USB trouvées</strong> : ne les branchez jamais, remettez-les au service informatique. Des clés piégées sont parfois abandonnées exprès, avec une étiquette alléchante.</li>
+              <li><strong>Les bornes de recharge publiques</strong> (aéroport, gare) : préférez votre propre chargeur branché sur une prise électrique, ou une batterie externe. Un port USB peut aussi transmettre des données.</li>
+            </ul>
+            <div class="callout retenir">
+              <div class="callout-title">À retenir</div>
+              <p>Être poli ne veut pas dire tout laisser passer. Demander qui est une personne inconnue dans les bureaux, c'est protéger tout le monde.</p>
+            </div>
+            <div class="lesson-foot"><button type="button" class="btn btn-secondary mark-read" data-lesson="l11" aria-pressed="false">Marquer comme lu</button></div>
+          </article>
+
+          <article class="lesson card" id="l12">
+            <h2><span class="num">12</span> Mises à jour et verrouillage</h2>
+            <h3>Les mises à jour</h3>
+            <p>Une mise à jour corrige souvent une <strong>faille de sécurité</strong>. Dès qu'elle est publiée, les escrocs savent où attaquer les appareils qui ne l'ont pas encore installée. Reporter une mise à jour, c'est laisser une porte ouverte.</p>
+            <ul>
+              <li>Acceptez les mises à jour et le redémarrage demandé dès que possible (à la pause, en fin de journée).</li>
+              <li>Pensez aussi au téléphone et aux applications.</li>
+              <li>N'installez des applications que depuis les magasins officiels ou le catalogue de l'entreprise.</li>
+            </ul>
+            <div class="callout warn">
+              <div class="callout-title">⚠ Les fausses mises à jour</div>
+              <p>Une fenêtre qui surgit sur un site web (« Votre navigateur est obsolète, téléchargez la mise à jour ») est un piège classique pour installer un logiciel malveillant. Les vraies mises à jour passent par les paramètres de l'appareil ou par le service informatique, jamais par une publicité.</p>
+            </div>
+            <h3>Le verrouillage de session</h3>
+            <p>Dès que vous quittez votre poste, même deux minutes pour l'imprimante ou la machine à café, verrouillez-le :</p>
+            <div class="grid grid-2">
+              <div class="example-box mt-0"><strong>Windows</strong><br><kbd>Windows</kbd> + <kbd>L</kbd></div>
+              <div class="example-box mt-0"><strong>Mac</strong><br><kbd>Ctrl</kbd> + <kbd>Cmd</kbd> + <kbd>Q</kbd></div>
+            </div>
+            <p style="margin-top:16px">Éteindre l'écran ne suffit pas : il suffit de le rallumer pour accéder à votre session. Sur le téléphone, un code ou une empreinte et un verrouillage automatique rapide sont indispensables.</p>
+            <div class="lesson-foot"><button type="button" class="btn btn-secondary mark-read" data-lesson="l12" aria-pressed="false">Marquer comme lu</button></div>
           </article>
 
           <div class="card center">

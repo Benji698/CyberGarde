@@ -362,9 +362,164 @@
     menu();
   }
 
+  /* =========================================================
+     4. Ma boîte mail
+     ========================================================= */
+  function initBoite() {
+    var host = document.getElementById('panel-boite');
+    var ACTIONS = { traiter: '✓ Traiter', signaler: '⚠ Signaler', supprimer: '🗑 Supprimer' };
+    var BEST = { legit: 'traiter', phish: 'signaler', spam: 'supprimer' };
+    // Points par catégorie et par action : 1 = bon réflexe, 0.5 = acceptable, 0 = erreur
+    var POINTS = {
+      legit: { traiter: 1, signaler: 0.5, supprimer: 0 },
+      phish: { signaler: 1, supprimer: 0.5, traiter: 0 },
+      spam: { supprimer: 1, signaler: 0.5, traiter: 0.5 }
+    };
+    var VERDICT = {
+      legit: { traiter: 'Bon réflexe : ce message est légitime.', signaler: 'Prudent, mais ce message était légitime : en cas de doute, vérifier auprès de l\'expéditeur évite de bloquer un vrai mail.', supprimer: 'Ce message était légitime et utile à votre travail : vous venez de le perdre.' },
+      phish: { signaler: 'Bon réflexe : c\'est un phishing, et votre signalement protège vos collègues.', supprimer: 'Vous ne vous êtes pas fait piéger, mais c\'est un phishing : le signaler aurait permis de le bloquer pour toute l\'entreprise.', traiter: 'Piège ! Ce message est un phishing.' },
+      spam: { supprimer: 'Bon réflexe : simple courrier indésirable, sans danger.', signaler: 'Acceptable : ce n\'était pas un phishing, juste un message indésirable. La suppression suffisait.', traiter: 'Sans danger, mais inutile : ce message indésirable pouvait être supprimé.' }
+    };
+    var mails, answers, current;
+
+    function start() {
+      mails = DATA.boite;
+      answers = {};
+      current = 0;
+      render();
+    }
+
+    function doneCount() { return Object.keys(answers).length; }
+
+    function listHtml() {
+      return mails.map(function (m, i) {
+        var a = answers[i];
+        var cls = 'inbox-item' + (i === current ? ' active' : '') + (a ? ' done' : ' unread');
+        var tag = '';
+        if (a) {
+          var p = POINTS[m.categorie][a];
+          tag = '<span class="tag ' + (p === 1 ? 'ok' : p > 0 ? 'warn' : 'ko') + '">' + ACTIONS[a] + '</span>';
+        }
+        return '<li><button type="button" class="' + cls + '" data-mail="' + i + '"' + (i === current ? ' aria-current="true"' : '') + '>' +
+          '<span class="inbox-from">' + esc(m.nom) + '<small>' + esc(m.heure) + '</small></span>' +
+          '<span class="inbox-subject">' + esc(m.objet) + '</span>' +
+          '<span class="inbox-preview">' + esc(m.apercu) + '</span>' + tag +
+        '</button></li>';
+      }).join('');
+    }
+
+    function render() {
+      var m = mails[current];
+      var a = answers[current];
+      host.innerHTML =
+        '<p class="muted">Voici votre boîte de réception du jour. Ouvrez chaque mail et décidez : <strong>traiter</strong> (il est légitime), <strong>signaler</strong> (c\'est un phishing) ou <strong>supprimer</strong> (indésirable mais sans danger).</p>' +
+        '<div class="inbox-progress">' + UI.progressBar(doneCount() / mails.length * 100, doneCount() + ' / ' + mails.length + ' mails triés') + '</div>' +
+        '<div class="inbox-layout">' +
+          '<ul class="inbox-list" aria-label="Boîte de réception">' + listHtml() + '</ul>' +
+          '<div class="mail-client inbox-reader">' +
+            '<div class="mail-header">' +
+              '<div class="mail-subject">' + esc(m.objet) + '</div>' +
+              '<dl class="mail-meta"><dt>De :</dt><dd>' + esc(m.nom) + ' &lt;' + esc(m.adresse) + '&gt;</dd><dt>À :</dt><dd>vous@monentreprise.fr</dd><dt>Heure :</dt><dd>' + esc(m.heure) + '</dd></dl>' +
+            '</div>' +
+            '<div class="mail-body">' + m.corps +
+              (m.pj ? '<div><span class="mail-attach">' + UI.icons.clip.replace('<svg', '<svg width="16" height="16"') + esc(m.pj) + '</span></div>' : '') +
+            '</div>' +
+            '<div class="mail-status" aria-live="polite">Survolez un lien pour voir sa véritable adresse.</div>' +
+            '<div class="inbox-actions">' +
+              Object.keys(ACTIONS).map(function (k) {
+                return '<button type="button" class="btn ' + (a === k ? (POINTS[m.categorie][k] === 1 ? 'btn-success' : 'btn-danger') : 'btn-secondary') + '" data-action="' + k + '"' + (a ? ' disabled' : '') + '>' + ACTIONS[k] + '</button>';
+              }).join('') +
+            '</div>' +
+            '<div class="inbox-feedback" aria-live="polite">' + (a ? feedbackHtml(m, a) : '') + '</div>' +
+          '</div>' +
+        '</div>';
+
+      host.querySelectorAll('[data-mail]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          current = parseInt(b.getAttribute('data-mail'), 10);
+          render();
+          if (window.matchMedia('(max-width: 860px)').matches) host.querySelector('.inbox-reader').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+      host.querySelectorAll('[data-action]').forEach(function (b) {
+        b.addEventListener('click', function () { decide(b.getAttribute('data-action')); });
+      });
+      var status = host.querySelector('.mail-status');
+      host.querySelectorAll('.inbox-reader a').forEach(function (l) {
+        l.addEventListener('click', function (e) { e.preventDefault(); });
+        if (!l.hasAttribute('data-url')) return;
+        function show() { status.textContent = l.getAttribute('data-url'); }
+        function hide() { status.textContent = 'Survolez un lien pour voir sa véritable adresse.'; }
+        l.addEventListener('mouseenter', show);
+        l.addEventListener('focus', show);
+        l.addEventListener('mouseleave', hide);
+        l.addEventListener('blur', hide);
+      });
+      var next = host.querySelector('.next-btn');
+      if (next) next.addEventListener('click', goNext);
+    }
+
+    function feedbackHtml(m, a) {
+      var p = POINTS[m.categorie][a];
+      var last = doneCount() === mails.length;
+      var best = BEST[m.categorie];
+      return '<div class="feedback ' + (p === 1 ? 'ok' : p > 0 ? 'mid' : 'ko') + '">' +
+          '<strong class="verdict">' + VERDICT[m.categorie][a] + '</strong>' +
+          '<p>' + esc(m.explication) + '</p>' +
+          (p < 1 ? '<p class="mb-0"><strong>Meilleur choix :</strong> ' + ACTIONS[best] + '</p>' : '') +
+        '</div>' +
+        '<div class="quiz-actions"><button type="button" class="btn btn-primary next-btn">' + (last ? 'Voir mon résultat' : 'Mail suivant →') + '</button></div>';
+    }
+
+    function decide(action) {
+      if (answers[current]) return;
+      answers[current] = action;
+      render();
+      var next = host.querySelector('.next-btn');
+      if (next) next.focus({ preventScroll: true });
+    }
+
+    function goNext() {
+      if (doneCount() === mails.length) return renderResult();
+      // Prochain mail non trié, en partant du mail courant
+      for (var k = 1; k <= mails.length; k++) {
+        var i = (current + k) % mails.length;
+        if (!answers[i]) { current = i; break; }
+      }
+      render();
+      host.querySelector('.inbox-reader').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function renderResult() {
+      var total = 0;
+      mails.forEach(function (m, i) { total += POINTS[m.categorie][answers[i]]; });
+      var pct = Math.round(total / mails.length * 100);
+      saveBest('boite', pct);
+      var missed = mails.map(function (m, i) { return { m: m, a: answers[i] }; })
+        .filter(function (x) { return POINTS[x.m.categorie][x.a] < 1; });
+      host.innerHTML =
+        '<div class="quiz card"><div class="result-hero">' +
+          '<div class="score-ring" style="--p:' + pct + '"><span>' + pct + '%</span></div>' +
+          '<h2>Boîte de réception triée</h2>' +
+          '<p class="muted">' + (pct >= 90 ? 'Excellent tri : aucun piège ne vous a échappé.' : pct >= 70 ? 'Bon tri, mais quelques messages méritent une seconde lecture.' : 'Plusieurs messages ont été mal classés. Relisez les explications ci-dessous et retentez votre chance.') + '</p>' +
+        '</div>' +
+        (missed.length ? '<h3>À revoir</h3><ul class="review-list">' + missed.map(function (x) {
+          return '<li><strong>' + esc(x.m.objet) + '</strong>' +
+            '<span class="tag ko">Votre choix : ' + ACTIONS[x.a] + '</span> <span class="tag ok">Meilleur choix : ' + ACTIONS[BEST[x.m.categorie]] + '</span>' +
+            '<p class="muted mb-0" style="margin-top:6px">' + esc(x.m.explication) + '</p></li>';
+        }).join('') + '</ul>' : '') +
+        '<div class="btn-row" style="margin-top:20px;justify-content:center"><button type="button" class="btn btn-primary retry">Recommencer</button></div></div>';
+      host.querySelector('.retry').addEventListener('click', start);
+      host.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    start();
+  }
+
   initIndices();
   initVraiFaux();
   initAppel();
+  initBoite();
   var initial = (location.hash || '').replace('#', '');
-  showTab(['indices', 'vraifaux', 'appel'].indexOf(initial) !== -1 ? initial : 'indices');
+  showTab(['indices', 'vraifaux', 'appel', 'boite'].indexOf(initial) !== -1 ? initial : 'indices');
 })();
