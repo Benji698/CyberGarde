@@ -75,7 +75,7 @@ window.DATA_SALARIES_SIMS = {
       type: 'url',
       contenu: 'https://www.impots.gouv.fr.remboursement-dossier.com/connexion',
       piege: true,
-      explication: 'Piège du sous-domaine : le vrai site est « remboursement-dossier.com ». « impots.gouv.fr » n\'est qu\'un leurre placé au début de l\'adresse.'
+      explication: 'Piège du sous-domaine : juste avant le premier « / », on lit « remboursement-dossier.com ». C\'est sur ce site, qui n\'a rien à voir avec les impôts, que vous arriveriez réellement. « impots.gouv.fr » n\'est qu\'un leurre placé au début de l\'adresse.'
     },
     {
       type: 'mail', expediteur: 'Service informatique <support@monentreprise.fr>', objet: 'Maintenance du réseau samedi',
