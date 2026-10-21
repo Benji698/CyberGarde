@@ -60,7 +60,20 @@
             </div>
             <div class="callout warn">
               <div class="callout-title">⚠ Le piège du sous-domaine</div>
-              <p>Dans <code>https://www.impots.gouv.fr.verification-compte.com</code>, le vrai site est <strong>verification-compte.com</strong>. Pour trouver le vrai site, repérez le premier « / » après « https:// », puis lisez le nom qui le précède en partant de la droite : c'est la fin du nom qui compte.</p>
+              <p>Les escrocs placent le nom d'un site connu <strong>au début</strong> de l'adresse pour vous rassurer. Mais c'est <strong>la fin du nom</strong> qui désigne le vrai site. Pour la trouver :</p>
+              <ol>
+                <li>Ignorez le début : <code>https://</code></li>
+                <li>Cherchez le premier <strong>/</strong> qui suit (s'il n'y en a pas, allez jusqu'au bout de l'adresse).</li>
+                <li>Regardez ce qui est <strong>juste avant</strong> ce / : c'est le vrai site. Tout ce qui est plus à gauche peut être inventé par l'escroc.</li>
+              </ol>
+              <div class="url-anatomy">
+                <div><span class="u-dim">https://</span><span class="u-decoy">www.impots.gouv.fr.</span><span class="u-real ko">verification-compte.com</span><span class="u-dim">/connexion</span></div>
+                <p>✗ Le vrai site est <strong>verification-compte.com</strong>. « impots.gouv.fr » n'est qu'un leurre placé au début.</p>
+              </div>
+              <div class="url-anatomy">
+                <div><span class="u-dim">https://</span><span class="u-dim">www.</span><span class="u-real ok">impots.gouv.fr</span><span class="u-dim">/accueil</span></div>
+                <p>✓ Juste avant le premier /, on lit bien <strong>impots.gouv.fr</strong> : c'est le site officiel.</p>
+              </div>
             </div>
             <div class="callout retenir">
               <div class="callout-title">À retenir</div>
