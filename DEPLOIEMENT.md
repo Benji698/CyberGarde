@@ -16,11 +16,13 @@ Ce qui est déjà prêt dans le dépôt :
 | `outils/build.sh` | Prépare le dossier `public/` avec uniquement les fichiers du site (ni le README, ni `outils/`). |
 | `_headers` | En-têtes de sécurité appliqués par Cloudflare à toutes les pages. |
 | `404.html` | Page affichée pour une adresse inexistante (Cloudflare l'utilise automatiquement). |
-| `mentions-legales.html` | Mentions légales et confidentialité, **à compléter** (étape 1). |
+| `mentions-legales.html` | Mentions légales et confidentialité (étape 1). |
 
-## Étape 1 — Compléter les mentions légales
+## Étape 1 — Vérifier les mentions légales
 
-La loi (LCEN) impose d'indiquer qui édite le site et qui l'héberge. Dans `mentions-legales.html`, remplacez chaque champ surligné **[À compléter : …]** : nom et forme juridique de l'entreprise, adresse, SIREN, contact, directeur ou directrice de la publication, téléphone de l'hébergeur. Faites valider le texte par votre responsable.
+La loi (LCEN) impose d'indiquer qui édite le site et qui l'héberge. Le site est actuellement édité par un particulier, à titre non professionnel : la page `mentions-legales.html` utilise donc la possibilité prévue par la loi de ne publier que les coordonnées de l'hébergeur (art. 6, III, 2 de la LCEN), l'identité de l'éditeur étant connue de Cloudflare via le compte.
+
+Si une entreprise reprend le site à son compte, la section « Éditeur du site » devra être remplacée par ses informations : dénomination, forme juridique, adresse du siège, numéro SIREN, contact et directeur ou directrice de la publication.
 
 ## Étape 2 — Créer un compte Cloudflare
 
