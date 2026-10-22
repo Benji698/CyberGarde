@@ -24,6 +24,10 @@ perl outils/serveur.pl 8000
 
 puis ouvrir <http://localhost:8000>. Alternative si Python est utilisable : `python3 -m http.server 8000`.
 
+## Mise en ligne
+
+Le site est prévu pour Cloudflare Pages (gratuit) : HTTPS, en-têtes de sécurité stricts, publication automatique depuis `main`. Voir [DEPLOIEMENT.md](DEPLOIEMENT.md).
+
 ## Structure
 
 ```
@@ -34,8 +38,13 @@ assets/js/ui.js               En-tête, pied de page, icônes, utilitaires
 assets/js/quiz-engine.js      Moteur de QCM
 assets/js/simulators.js       Simulateurs du parcours salarié
 assets/js/scenario-engine.js  Moteur de scénario du parcours IT (XP, menace, chrono, badges)
+assets/js/pages/              Script propre à chaque page (aucun JavaScript dans le HTML, pour la CSP)
 data/                         Tout le contenu pédagogique
 outils/serveur.pl             Mini serveur web de développement
+outils/build.sh               Prépare le dossier public/ mis en ligne par Cloudflare Pages
+_headers                      En-têtes de sécurité (Cloudflare Pages)
+404.html                      Page « introuvable »
+mentions-legales.html         Mentions légales et confidentialité
 ```
 
 ## Ajouter ou modifier du contenu

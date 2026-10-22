@@ -60,7 +60,20 @@
             </div>
             <div class="callout warn">
               <div class="callout-title">⚠ Le piège du sous-domaine</div>
-              <p>Dans <code>https://www.impots.gouv.fr.verification-compte.com</code>, le vrai site est <strong>verification-compte.com</strong>. Lisez l'adresse de droite à gauche à partir du premier « / » : c'est la fin du nom qui compte.</p>
+              <p>Les escrocs placent le nom d'un site connu <strong>au début</strong> de l'adresse pour vous rassurer. Mais c'est <strong>la fin du nom</strong> qui indique le site sur lequel vous arriverez réellement. Pour la trouver :</p>
+              <ol>
+                <li>Ignorez le début : <code>https://</code></li>
+                <li>Cherchez le premier <strong>/</strong> qui suit (s'il n'y en a pas, allez jusqu'au bout de l'adresse).</li>
+                <li>Regardez ce qui est <strong>juste avant</strong> ce / : c'est le site où vous arriverez. Est-ce bien celui que vous attendiez ? Tout ce qui est plus à gauche peut être inventé par l'escroc.</li>
+              </ol>
+              <div class="url-anatomy">
+                <div><span class="u-dim">https://</span><span class="u-decoy">www.impots.gouv.fr.</span><span class="u-real ko">verification-compte.com</span><span class="u-dim">/connexion</span></div>
+                <p>✗ Piège : vous arriveriez sur <strong>verification-compte.com</strong>, un site qui n'a rien à voir avec les impôts. « impots.gouv.fr » n'est qu'un leurre placé au début.</p>
+              </div>
+              <div class="url-anatomy">
+                <div><span class="u-dim">https://</span><span class="u-dim">www.</span><span class="u-real ok">impots.gouv.fr</span><span class="u-dim">/accueil</span></div>
+                <p>✓ Fiable : juste avant le premier /, on lit bien <strong>impots.gouv.fr</strong>, le site officiel des impôts.</p>
+              </div>
             </div>
             <div class="callout retenir">
               <div class="callout-title">À retenir</div>
@@ -271,7 +284,7 @@
               <li><strong>Oublier des documents</strong> sur l'imprimante ou les jeter à la poubelle : utilisez le broyeur pour tout ce qui est confidentiel.</li>
             </ul>
             <h3>Le RGPD, côté salarié</h3>
-            <p>Une <strong>donnée personnelle</strong> est toute information qui concerne une personne : nom, adresse mail, numéro de téléphone, photo, salaire… Le RGPD impose à l'entreprise de les protéger. Concrètement, cela veut dire : n'accéder qu'aux données dont on a besoin pour son travail, ne pas les conserver « au cas où », et ne pas les copier hors des outils prévus.</p>
+            <p>On appelle <strong>donnée personnelle</strong> toute information qui permet d'identifier une personne, directement ou indirectement : son nom, son adresse mail, son numéro de téléphone, sa photo, son salaire… Le RGPD impose à l'entreprise de les protéger. Concrètement, cela veut dire : n'accéder qu'aux données dont on a besoin pour son travail, ne pas les conserver « au cas où », et ne pas les copier hors des outils prévus.</p>
             <div class="callout faire">
               <div class="callout-title">✓ Une fuite ou une erreur d'envoi ?</div>
               <p>Prévenez <strong>tout de suite</strong> votre responsable et le service informatique (ou le délégué à la protection des données). L'entreprise n'a que 72 heures pour notifier la CNIL : chaque heure compte, et personne ne vous reprochera d'avoir signalé votre erreur.</p>
@@ -336,6 +349,6 @@
   <footer id="site-footer"></footer>
   <script src="../assets/js/storage.js"></script>
   <script src="../assets/js/ui.js"></script>
-  <script>UI.trackLessons('salaries.coursLus', document.getElementById('course-progress'));</script>
+  <script src="../assets/js/pages/salaries-cours.js"></script>
 </body>
 </html>

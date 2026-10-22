@@ -163,7 +163,6 @@ kbd {
 }
 .site-footer .container { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: space-between; }
 .site-footer a { color: var(--text-muted); }
-
 /* ---------- Boutons ---------- */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -270,6 +269,19 @@ kbd {
   flex: none; width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center;
   background: var(--primary-soft); color: var(--primary); font-size: 1rem; font-weight: 800;
 }
+mark.todo { background: var(--warning-soft); color: var(--warning); font-weight: 700; padding: 0 4px; border-radius: 4px; }
+.url-anatomy {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 12px 14px; margin: 12px 0 0;
+}
+.url-anatomy > div { font-family: var(--mono); font-size: .95rem; word-break: break-all; line-height: 1.9; }
+.url-anatomy p { margin: 6px 0 0; font-size: .92rem; }
+.url-anatomy .u-dim { color: var(--text-muted); }
+.url-anatomy .u-decoy { color: var(--text-muted); text-decoration: line-through; }
+.url-anatomy .u-real { font-weight: 800; padding: 2px 4px; border-radius: 4px; }
+.url-anatomy .u-real.ko { background: var(--danger-soft); color: var(--danger); }
+.url-anatomy .u-real.ok { background: var(--success-soft); color: var(--success); }
+.callout ol { margin: 0 0 4px; padding-left: 1.4em; }
 .part-label {
   font-size: .85rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
   color: var(--accent); margin: 8px 0 12px;

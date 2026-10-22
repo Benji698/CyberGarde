@@ -79,7 +79,7 @@
       <div class="card">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
           <h2 class="mb-0">Les 10 réflexes cyber</h2>
-          <button type="button" class="btn btn-secondary" onclick="window.print()">🖨 Imprimer la fiche</button>
+          <button type="button" class="btn btn-secondary" id="print-btn">🖨 Imprimer la fiche</button>
         </div>
         <p class="print-only">CyberGarde — fiche de sensibilisation à afficher.</p>
         <ol class="reflexes" style="margin-top:16px">
@@ -110,23 +110,6 @@
   <script src="assets/js/storage.js"></script>
   <script src="assets/js/ui.js"></script>
   <script src="data/glossaire.js"></script>
-  <script>
-    (function () {
-      var list = document.getElementById('glossary');
-      var count = document.getElementById('glossary-count');
-      var input = document.getElementById('glossary-search');
-      function normalize(s) { return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
-      function render(q) {
-        var nq = normalize(q || '');
-        var items = DATA_GLOSSAIRE.filter(function (g) { return !nq || normalize(g.terme + ' ' + g.def).indexOf(nq) !== -1; });
-        list.innerHTML = items.map(function (g) {
-          return '<div class="entry"><dt>' + UI.escape(g.terme) + '</dt><dd>' + UI.escape(g.def) + '</dd></div>';
-        }).join('') || '<p class="muted">Aucun terme ne correspond à votre recherche.</p>';
-        count.textContent = items.length + ' terme' + (items.length > 1 ? 's' : '') + (nq ? ' trouvé' + (items.length > 1 ? 's' : '') : '');
-      }
-      input.addEventListener('input', function () { render(input.value); });
-      render('');
-    })();
-  </script>
+  <script src="assets/js/pages/ressources.js"></script>
 </body>
 </html>

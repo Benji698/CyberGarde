@@ -70,7 +70,8 @@
         '<div><strong>CyberGarde</strong> — site de sensibilisation à la cybersécurité.<br>Projet réalisé dans le cadre d\'une alternance en administration système.</div>' +
         '<div>Victime d\'une cyberattaque ? <a href="https://www.17cyber.gouv.fr" target="_blank" rel="noopener">17Cyber</a> · ' +
         '<a href="https://www.cybermalveillance.gouv.fr" target="_blank" rel="noopener">cybermalveillance.gouv.fr</a><br>' +
-        '<a href="' + root + 'ressources.html">Ressources et numéros utiles</a></div>' +
+        '<a href="' + root + 'ressources.html">Ressources et numéros utiles</a> · ' +
+        '<a href="' + root + 'mentions-legales.html">Mentions légales et confidentialité</a></div>' +
       '</div>';
   }
 

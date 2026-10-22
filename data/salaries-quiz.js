@@ -50,7 +50,7 @@ window.DATA_SALARIES_QUIZ = [
     situation: 'Vous venez de cliquer sur un lien dans un mail et de saisir votre identifiant et votre mot de passe sur une page… puis vous vous rendez compte que l\'adresse du site était bizarre.',
     choix: [
       { t: 'Je ne dis rien, j\'ai honte et ce n\'est probablement pas grave.', ok: false },
-      { t: 'Je change immédiatement mon mot de passe (depuis le vrai site) et je préviens le service informatique.', ok: true },
+      { t: 'Je change immédiatement mon mot de passe (depuis le site officiel) et je préviens le service informatique.', ok: true },
       { t: 'Je supprime le mail pour effacer les traces.', ok: false }
     ],
     explication: 'Tout le monde peut se faire piéger : l\'important est de réagir vite. Changer le mot de passe coupe l\'accès à l\'attaquant, et prévenir l\'IT lui permet de vérifier si le compte a été utilisé. Supprimer le mail fait disparaître des indices utiles à l\'enquête.'
