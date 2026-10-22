@@ -1,64 +1,93 @@
-# Mise en ligne de CyberGarde
+# Mise en ligne de CyberGarde sur Cloudflare Pages
 
-Le site est publié sur **Azure Static Web Apps** (Microsoft), en plan **gratuit** :
+Le site est hébergé sur **Cloudflare Pages** :
 
-- accessible à tous, en **HTTPS** avec un certificat géré et renouvelé automatiquement ;
-- **en-têtes de sécurité** stricts (voir plus bas) ;
+- hébergement **gratuit**, en **HTTPS** avec un certificat créé et renouvelé automatiquement ;
+- **en-têtes de sécurité** stricts (fichier `_headers`) ;
 - aucun serveur à maintenir, aucune base de données, aucun compte : la progression de chaque visiteur reste dans son propre navigateur ;
-- **publication automatique** : à chaque mise à jour de la branche `main` sur GitHub, le site en ligne est mis à jour.
+- **publication automatique** : à chaque mise à jour de la branche `main` sur GitHub, Cloudflare republie le site.
+
+Le seul coût est le **nom de domaine** (par exemple `cybergarde.fr`), environ 10 € par an.
 
 Ce qui est déjà prêt dans le dépôt :
 
 | Fichier | Rôle |
 |---|---|
-| `staticwebapp.config.json` | En-têtes de sécurité et page d'erreur 404. |
-| `.github/workflows/deploy-azure.yml` | Publication automatique ; seuls les fichiers du site sont mis en ligne (ni le README, ni `outils/`). |
-| `mentions-legales.html` | Mentions légales et politique de confidentialité, **à compléter** (voir étape 4). |
-| `404.html` | Page affichée pour une adresse inexistante. |
+| `outils/build.sh` | Prépare le dossier `public/` avec uniquement les fichiers du site (ni le README, ni `outils/`). |
+| `_headers` | En-têtes de sécurité appliqués par Cloudflare à toutes les pages. |
+| `404.html` | Page affichée pour une adresse inexistante (Cloudflare l'utilise automatiquement). |
+| `mentions-legales.html` | Mentions légales et confidentialité, **à compléter** (étape 1). |
 
-## Étape 1 — Créer un compte Azure
+## Étape 1 — Compléter les mentions légales
 
-Si l'entreprise a déjà un abonnement Azure, demandez au service informatique le droit d'y créer une ressource. Sinon, créez un compte sur [azure.microsoft.com](https://azure.microsoft.com) : le plan gratuit de Static Web Apps ne coûte rien, mais Azure demande une carte bancaire à l'inscription pour vérifier l'identité.
+La loi (LCEN) impose d'indiquer qui édite le site et qui l'héberge. Dans `mentions-legales.html`, remplacez chaque champ surligné **[À compléter : …]** : nom et forme juridique de l'entreprise, adresse, SIREN, contact, directeur ou directrice de la publication, téléphone de l'hébergeur. Faites valider le texte par votre responsable.
 
-## Étape 2 — Créer la Static Web App
+## Étape 2 — Créer un compte Cloudflare
 
-1. Sur [portal.azure.com](https://portal.azure.com), cliquez sur **Créer une ressource** et recherchez **Static Web App**.
-2. Renseignez :
-   - **Groupe de ressources** : créez-en un, par exemple `rg-cybergarde` ;
-   - **Nom** : `cybergarde` ;
-   - **Type de plan** : **Gratuit** ;
-   - **Région** : Europe de l'Ouest (West Europe) ;
-   - **Source de déploiement** : **Autre**. Le workflow GitHub est déjà dans le dépôt ; choisir « GitHub » ici en créerait un second.
-3. Cliquez sur **Vérifier + créer**, puis **Créer**.
-4. Ouvrez la ressource et notez son **URL** (du type `https://nom-aleatoire.azurestaticapps.net`).
+1. Allez sur [dash.cloudflare.com/sign-up](https://dash.cloudflare.com/sign-up).
+2. Créez le compte, idéalement avec une adresse de l'entreprise (ou une adresse partagée de l'équipe informatique), pour que le site ne dépende pas d'une seule personne.
+3. Confirmez l'adresse mail, puis **activez la double authentification** : icône de profil → **Profil → Authentification**. Ce compte contrôlera le site : il doit être bien protégé.
 
-## Étape 3 — Relier GitHub à Azure
+## Étape 3 — Créer le projet Pages relié à GitHub
 
-1. Dans la Static Web App, cliquez sur **Gérer le jeton de déploiement** et copiez le jeton.
-2. Dans le dépôt GitHub : **Settings → Secrets and variables → Actions → New repository secret** :
-   - Nom : `AZURE_STATIC_WEB_APPS_API_TOKEN`
-   - Valeur : le jeton copié.
+1. Dans le menu de gauche : **Workers et Pages** (« Workers & Pages »), puis **Créer** (« Create »).
+2. Choisissez l'onglet **Pages**, puis **Importer un dépôt Git existant** (« Import an existing Git repository »).
+3. Cliquez sur **Connecter GitHub**. Une fenêtre GitHub s'ouvre :
+   - choisissez **Only select repositories** et sélectionnez uniquement **CyberGarde** ;
+   - validez avec **Install & Authorize**.
+4. De retour sur Cloudflare, sélectionnez le dépôt **CyberGarde**, puis **Commencer la configuration** (« Begin setup »).
+5. Renseignez :
 
-Ce jeton permet de publier sur le site : ne le partagez pas. En cas de fuite, régénérez-le depuis le même menu d'Azure, puis remplacez le secret dans GitHub.
+   | Champ | Valeur |
+   |---|---|
+   | Nom du projet | `cybergarde` (il donne l'adresse provisoire `cybergarde.pages.dev`) |
+   | Branche de production | `main` |
+   | Préréglage de framework (« Framework preset ») | **Aucun** (« None ») |
+   | Commande de build | `bash outils/build.sh` |
+   | Répertoire de sortie (« Build output directory ») | `public` |
 
-## Étape 4 — Compléter les mentions légales
+6. Cliquez sur **Enregistrer et déployer** (« Save and Deploy »). Après environ une minute, le site est en ligne sur `https://cybergarde.pages.dev` (ou une variante si le nom est déjà pris).
 
-La loi (LCEN) impose d'indiquer qui édite le site. Dans `mentions-legales.html`, remplacez chaque champ surligné **[À compléter : …]** : nom et forme juridique de l'entreprise, adresse, SIREN, contact, directeur ou directrice de la publication. Faites valider le texte par votre responsable. Tant qu'un champ reste à compléter, la publication affiche un avertissement dans GitHub Actions.
+> Si l'interface ne propose que la création d'un **Worker** et plus d'onglet Pages, ne continuez pas : la configuration est légèrement différente, il faudra l'adapter.
 
-## Étape 5 — Publier
+## Étape 4 — Acheter le nom de domaine
 
-Dans le dépôt GitHub : **Actions → Déploiement Azure → Run workflow**. Ensuite, chaque fusion sur `main` republie automatiquement le site.
+**Option A — Chez Cloudflare** (le plus simple, prix coûtant) :
+
+1. Menu de gauche : **Domain Registration → Register Domains**.
+2. Cherchez le nom voulu (par exemple `cybergarde.fr` ou `cybergarde-monentreprise.fr`), ajoutez-le au panier et payez.
+3. Le domaine apparaît automatiquement dans votre compte Cloudflare.
+
+**Option B — Chez un autre registraire** (OVHcloud, Gandi…), par exemple si l'extension voulue n'est pas proposée par Cloudflare :
+
+1. Achetez le domaine chez le registraire.
+2. Sur Cloudflare : **Ajouter un domaine** (« Add a domain »), saisissez le nom, choisissez le plan **Free**.
+3. Cloudflare affiche **deux serveurs de noms** (du type `xxx.ns.cloudflare.com`). Chez le registraire, remplacez les serveurs DNS du domaine par ces deux-là (chez OVHcloud : **Noms de domaine → votre domaine → Serveurs DNS → Modifier les serveurs DNS**).
+4. Attendez le mail de Cloudflare confirmant que le domaine est actif (de quelques minutes à 24 h).
+
+## Étape 5 — Relier le domaine au site
+
+1. Ouvrez **Workers et Pages → cybergarde → Domaines personnalisés** (« Custom domains ») → **Configurer un domaine personnalisé**.
+2. Saisissez le domaine (par exemple `cybergarde.fr`), puis validez : Cloudflare crée lui-même l'enregistrement DNS et le certificat HTTPS.
+3. Recommencez avec `www.cybergarde.fr` si vous voulez que cette adresse fonctionne aussi.
+4. Dans le domaine (menu **SSL/TLS**) :
+   - **Edge Certificates → Always Use HTTPS** : **activé** ;
+   - **Minimum TLS Version** : **TLS 1.2**.
 
 ## Étape 6 — Vérifier
 
-1. Ouvrez l'URL du site : le cadenas HTTPS doit s'afficher.
-2. Essayez une adresse inexistante (`/test`) : la page « Page introuvable » doit s'afficher.
-3. Contrôlez les en-têtes de sécurité, par exemple sur [securityheaders.com](https://securityheaders.com), ou dans les outils de développement du navigateur (onglet Réseau → en-têtes de la réponse).
-4. Faites un tour de toutes les pages, de préférence aussi sur téléphone.
+1. Ouvrez `https://votre-domaine` : le cadenas HTTPS doit s'afficher.
+2. Ouvrez `http://votre-domaine` (sans « s ») : vous devez être redirigé vers la version HTTPS.
+3. Essayez une adresse inexistante (`/test`) : la page « Page introuvable » doit s'afficher.
+4. Testez les en-têtes de sécurité sur [securityheaders.com](https://securityheaders.com) : la note attendue est **A** ou mieux.
+5. Faites un tour de toutes les pages, sur ordinateur et sur téléphone.
 
-## Option — Une adresse au nom de l'entreprise
+## Au quotidien
 
-Pour utiliser par exemple `cyber.monentreprise.fr` : dans la Static Web App, ouvrez **Domaines personnalisés → Ajouter**, puis créez chez le gestionnaire DNS de l'entreprise l'enregistrement **CNAME** indiqué par Azure. Le certificat HTTPS de ce domaine est créé et renouvelé automatiquement, gratuitement.
+- **Mettre à jour le site** : fusionnez une pull request sur `main` ; Cloudflare republie le site tout seul en une à deux minutes. L'historique des publications est visible dans **Workers et Pages → cybergarde → Déploiements**, et l'on peut revenir à une version précédente en un clic (**Rollback**).
+- **Prévisualiser avant de publier** : chaque pull request reçoit aussi une adresse d'aperçu privée (`xxxx.cybergarde.pages.dev`), indiquée par Cloudflare dans la pull request.
+- **À ne pas activer** : **Web Analytics** et **Rocket Loader**. Ils injectent des scripts externes, que la politique de sécurité du site bloquerait, et la page de confidentialité indique qu'il n'y a pas de mesure d'audience.
+- **Renouvellement du domaine** : activez le renouvellement automatique et vérifiez que le moyen de paiement reste valide. Un domaine expiré rend le site inaccessible et peut être racheté par quelqu'un d'autre.
 
 ## Les protections en place
 
