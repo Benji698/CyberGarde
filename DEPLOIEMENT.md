@@ -1,6 +1,6 @@
-# Mise en ligne de CyberGarde sur Cloudflare Pages
+# Mise en ligne de CyberGarde sur Cloudflare
 
-Le site est hébergé sur **Cloudflare Pages** :
+Le site est hébergé sur **Cloudflare** (Workers, fichiers statiques) :
 
 - hébergement **gratuit**, en **HTTPS** avec un certificat créé et renouvelé automatiquement ;
 - **en-têtes de sécurité** stricts (fichier `_headers`) ;
@@ -13,6 +13,7 @@ Ce qui est déjà prêt dans le dépôt :
 
 | Fichier | Rôle |
 |---|---|
+| `wrangler.jsonc` | Configuration Cloudflare : nom du site, dossier publié (`public/`), page 404. |
 | `outils/build.sh` | Prépare le dossier `public/` avec uniquement les fichiers du site (ni le README, ni `outils/`). |
 | `_headers` | En-têtes de sécurité appliqués par Cloudflare à toutes les pages. |
 | `404.html` | Page affichée pour une adresse inexistante (Cloudflare l'utilise automatiquement). |
@@ -28,27 +29,32 @@ La loi (LCEN) impose d'indiquer qui édite le site et qui l'héberge. Dans `ment
 2. Créez le compte, idéalement avec une adresse de l'entreprise (ou une adresse partagée de l'équipe informatique), pour que le site ne dépende pas d'une seule personne.
 3. Confirmez l'adresse mail, puis **activez la double authentification** : icône de profil → **Profil → Authentification**. Ce compte contrôlera le site : il doit être bien protégé.
 
-## Étape 3 — Créer le projet Pages relié à GitHub
+## Étape 3 — Créer le site (Worker) relié à GitHub
+
+Cloudflare regroupe désormais Pages et Workers : le site est créé comme un **Worker** qui sert les fichiers statiques. Sa configuration est dans `wrangler.jsonc`.
 
 1. Dans le menu de gauche : **Workers et Pages** (« Workers & Pages »), puis **Créer** (« Create »).
-2. Choisissez l'onglet **Pages**, puis **Importer un dépôt Git existant** (« Import an existing Git repository »).
-3. Cliquez sur **Connecter GitHub**. Une fenêtre GitHub s'ouvre :
+2. Choisissez **Importer un dépôt** (« Import a repository »), puis **Connecter GitHub**. Une fenêtre GitHub s'ouvre :
    - choisissez **Only select repositories** et sélectionnez uniquement **CyberGarde** ;
    - validez avec **Install & Authorize**.
-4. De retour sur Cloudflare, sélectionnez le dépôt **CyberGarde**, puis **Commencer la configuration** (« Begin setup »).
-5. Renseignez :
+3. Sélectionnez le dépôt **CyberGarde**, puis renseignez :
 
    | Champ | Valeur |
    |---|---|
-   | Nom du projet | `cybergarde` (il donne l'adresse provisoire `cybergarde.pages.dev`) |
-   | Branche de production | `main` |
-   | Préréglage de framework (« Framework preset ») | **Aucun** (« None ») |
+   | Nom du projet | `cybergarde` (**obligatoirement** le même nom que dans `wrangler.jsonc`) |
    | Commande de build | `bash outils/build.sh` |
-   | Répertoire de sortie (« Build output directory ») | `public` |
+   | Commande de déploiement | `npx wrangler deploy` (valeur proposée par défaut) |
+   | Commande de déploiement des versions non production | `npx wrangler versions upload` (valeur par défaut) |
+   | Activer les builds d'aperçu | activé (une adresse d'aperçu pour chaque pull request) |
+   | Protéger avec Cloudflare Access | désactivé (le site est public) |
+   | Paramètres avancés → Chemin d'accès | `/` |
+   | Jeton d'API | **Créer un nouveau jeton**, nom : `cybergarde-build` |
 
-6. Cliquez sur **Enregistrer et déployer** (« Save and Deploy »). Après environ une minute, le site est en ligne sur `https://cybergarde.pages.dev` (ou une variante si le nom est déjà pris).
+4. Cliquez sur **Déployer**. Après une à deux minutes, le site est en ligne sur une adresse du type `https://cybergarde.votre-compte.workers.dev`.
 
-> Si l'interface ne propose que la création d'un **Worker** et plus d'onglet Pages, ne continuez pas : la configuration est légèrement différente, il faudra l'adapter.
+> Si une erreur indique que le nom ne correspond pas (« name mismatch »), le nom du projet n'est pas `cybergarde` : modifiez-le, ou changez la ligne `"name"` de `wrangler.jsonc`.
+
+Le site utilise des adresses sans « .html » : `/salaries/cours.html` est redirigé vers `/salaries/cours`. C'est normal, tous les liens fonctionnent.
 
 ## Étape 4 — Acheter le nom de domaine
 
@@ -67,7 +73,7 @@ La loi (LCEN) impose d'indiquer qui édite le site et qui l'héberge. Dans `ment
 
 ## Étape 5 — Relier le domaine au site
 
-1. Ouvrez **Workers et Pages → cybergarde → Domaines personnalisés** (« Custom domains ») → **Configurer un domaine personnalisé**.
+1. Ouvrez **Workers et Pages → cybergarde → Paramètres → Domaines et itinéraires** (« Domains & Routes ») → **Ajouter** → **Domaine personnalisé**.
 2. Saisissez le domaine (par exemple `cybergarde.fr`), puis validez : Cloudflare crée lui-même l'enregistrement DNS et le certificat HTTPS.
 3. Recommencez avec `www.cybergarde.fr` si vous voulez que cette adresse fonctionne aussi.
 4. Dans le domaine (menu **SSL/TLS**) :
@@ -84,8 +90,8 @@ La loi (LCEN) impose d'indiquer qui édite le site et qui l'héberge. Dans `ment
 
 ## Au quotidien
 
-- **Mettre à jour le site** : fusionnez une pull request sur `main` ; Cloudflare republie le site tout seul en une à deux minutes. L'historique des publications est visible dans **Workers et Pages → cybergarde → Déploiements**, et l'on peut revenir à une version précédente en un clic (**Rollback**).
-- **Prévisualiser avant de publier** : chaque pull request reçoit aussi une adresse d'aperçu privée (`xxxx.cybergarde.pages.dev`), indiquée par Cloudflare dans la pull request.
+- **Mettre à jour le site** : fusionnez une pull request sur `main` ; Cloudflare republie le site tout seul en une à deux minutes. L'historique des publications est visible dans **Workers et Pages → cybergarde → Déploiements** (« Deployments »), et l'on peut revenir à une version précédente en un clic (**Rollback**).
+- **Prévisualiser avant de publier** : chaque pull request reçoit aussi une adresse d'aperçu, indiquée par Cloudflare dans la pull request.
 - **À ne pas activer** : **Web Analytics** et **Rocket Loader**. Ils injectent des scripts externes, que la politique de sécurité du site bloquerait, et la page de confidentialité indique qu'il n'y a pas de mesure d'audience.
 - **Renouvellement du domaine** : activez le renouvellement automatique et vérifiez que le moyen de paiement reste valide. Un domaine expiré rend le site inaccessible et peut être racheté par quelqu'un d'autre.
 

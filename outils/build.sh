@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Prépare le dossier public/ que Cloudflare Pages met en ligne.
+# Prépare le dossier public/ que Cloudflare met en ligne (voir wrangler.jsonc).
 # Seuls les fichiers du site y sont copiés (pas le README, ni outils/, ni .git).
 set -euo pipefail
 cd "$(dirname "$0")/.."

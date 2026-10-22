@@ -1,0 +1,10 @@
+// Configuration Cloudflare Workers : le site est servi comme fichiers statiques depuis public/
+// (préparé par outils/build.sh). Le nom doit être identique à celui du Worker créé sur Cloudflare.
+{
+  "name": "cybergarde",
+  "compatibility_date": "2025-10-01",
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "404-page"
+  }
+}
